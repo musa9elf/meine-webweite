@@ -3,6 +3,25 @@
 <head>
 <title>Meine Visitenkarte</title>
 <style>
+  .button {
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: white;
+  color: #1a1a2e;
+  transform: scale(1.1);
+}
+
+h1 {
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 10px #00d4ff; }
+  50% { text-shadow: 0 0 30px #00d4ff; }
+  100% { text-shadow: 0 0 10px #00d4ff; }
+}
 body {
   background-color: #1a1a2e;
   color: white;
