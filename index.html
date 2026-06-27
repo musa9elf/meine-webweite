@@ -1,184 +1,307 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Meine Visitenkarte</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<title>Dein Name – Premium Web & KI Wien</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
-  background-color: #1a1a2e;
-  color: white;
-  font-family: 'Inter', Arial, sans-serif;
-  text-align: center;
-  padding: 50px;
+  background-color: #0B0B0C;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  max-width: 1280px;
+  margin: 0 auto;
 }
+
+/* NAV */
 nav {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(26, 26, 46, 0.9);
-  padding: 20px;
-  text-align: center;
-  backdrop-filter: blur(10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1280px;
+  background-color: rgba(11, 11, 12, 0.85);
+  backdrop-filter: blur(20px);
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #2B2D31;
+  z-index: 100;
 }
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 20px;
-  font-size: 16px;
-}
-nav a:hover {
-  color: #00d4ff;
-}
-h1 {
-  color: #00d4ff;
-  font-size: 40px;
-  animation: glow 2s infinite;
-}
-p {
+
+.nav-logo {
   font-size: 18px;
-  color: #aaaaaa;
+  font-weight: 700;
+  color: #FFFFFF;
 }
-.button {
-  background-color: #00d4ff;
-  color: black;
-  padding: 15px 30px;
-  border-radius: 25px;
+
+.nav-links a {
+  color: #A9ABB3;
   text-decoration: none;
-  font-size: 16px;
-  transition: all 0.3s ease;
+  margin-left: 40px;
+  font-size: 15px;
+  transition: color 0.3s ease;
 }
-.button:hover {
-  background-color: white;
-  color: #1a1a2e;
-  transform: scale(1.1);
+
+.nav-links a:hover {
+  color: #FFFFFF;
 }
-@keyframes glow {
-  0% { text-shadow: 0 0 10px #00d4ff; }
-  50% { text-shadow: 0 0 30px #00d4ff; }
-  100% { text-shadow: 0 0 10px #00d4ff; }
-}
+
+/* HERO */
 .hero {
-  padding: 120px 20px;
-  border-bottom: 1px solid #333;
+  padding: 180px 60px 120px;
+  border-bottom: 1px solid #2B2D31;
 }
-.subtitle {
+
+.hero-tag {
+  display: inline-block;
+  background-color: #1C1C20;
+  border: 1px solid #2B2D31;
+  color: #A9ABB3;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -2px;
+}
+
+.accent {
+  color: #4F7CFF;
+}
+
+.hero p {
   font-size: 20px;
-  color: #888;
-  margin-bottom: 40px;
+  color: #A9ABB3;
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
 }
+
+.button {
+  background-color: #4F7CFF;
+  color: white;
+  padding: 14px 32px;
+  border-radius: 18px;
+  border: none;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(79, 124, 255, 0.3);
+}
+
+.button:hover {
+  background-color: #6A92FF;
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(79, 124, 255, 0.5);
+}
+
+/* ABOUT */
 .about {
-  padding: 80px 20px;
-  max-width: 600px;
+  padding: 120px 60px;
+  border-bottom: 1px solid #2B2D31;
+  max-width: 700px;
   margin: 0 auto;
-  border-bottom: 1px solid #333;
+  text-align: center;
 }
+
+h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.about p {
+  font-size: 18px;
+  color: #A9ABB3;
+  line-height: 1.8;
+}
+
+/* SERVICES */
 .services {
-  padding: 80px 20px;
+  padding: 120px 60px;
+  border-bottom: 1px solid #2B2D31;
+  text-align: center;
 }
+
 .cards {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: 60px;
 }
+
 .card {
-  background-color: #16213e;
-  padding: 40px 30px;
-  border-radius: 15px;
-  font-size: 18px;
-  width: 200px;
+  background-color: #1C1C20;
+  border: 1px solid #2B2D31;
+  padding: 40px 32px;
+  border-radius: 24px;
+  font-size: 16px;
+  width: 220px;
+  transition: all 0.4s ease;
+  cursor: default;
 }
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: #4F7CFF;
+  box-shadow: 0 20px 40px rgba(79, 124, 255, 0.15);
 }
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
+
+.card-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
 }
-  .contact {
-  padding: 80px 20px;
-  border-top: 1px solid #333;
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #A9ABB3;
+  line-height: 1.6;
+}
+
+/* CONTACT */
+.contact {
+  padding: 120px 60px;
+  border-bottom: 1px solid #2B2D31;
+  text-align: center;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   max-width: 500px;
-  margin: 40px auto;
-  gap: 15px;
+  margin: 60px auto 0;
+  gap: 16px;
 }
 
 input, textarea {
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #333;
-  background-color: #16213e;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 1px solid #2B2D31;
+  background-color: #141416;
   color: white;
-  font-size: 16px;
-  font-family: 'Inter', Arial, sans-serif;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  transition: border 0.3s ease;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: #4F7CFF;
 }
 
 textarea {
   height: 150px;
+  resize: none;
 }
 
+/* FOOTER */
 footer {
-  padding: 40px 20px;
-  border-top: 1px solid #333;
-  color: #555;
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #A9ABB3;
   font-size: 14px;
-  margin-top: 40px;
 }
 
 .footer-links a {
-  color: #555;
+  color: #A9ABB3;
   text-decoration: none;
-  margin: 0 10px;
+  margin-left: 24px;
+  transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #00d4ff;
+  color: #FFFFFF;
+}
+
+/* ANIMATIONEN */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
 </head>
 <body>
+
 <nav>
-  <a href="#about">Über mich</a>
-  <a href="#services">Leistungen</a>
-  <a href="#contact">Kontakt</a>
+  <div class="nav-logo">Dein Name</div>
+  <div class="nav-links">
+    <a href="#about">Über mich</a>
+    <a href="#services">Leistungen</a>
+    <a href="#contact">Kontakt</a>
+  </div>
 </nav>
 
 <section class="hero">
-  <h1>Dein Name</h1>
-  <p class="subtitle">Premium Webseiten · Video · KI</p>
-  <button class="button" onclick="zeigeNachricht()">Kontakt aufnehmen</button>
+  <div class="hero-tag">✦ Wien, Österreich</div>
+  <h1>Premium Web<br><span class="accent">& KI Lösungen</span></h1>
+  <p>Ich helfe Wiener Unternehmen mit modernen Webseiten, professionellen Videos und KI-Automatisierung.</p>
+  <button class="button" onclick="zeigeNachricht()">Projekt starten</button>
 </section>
 
 <section class="about fade-in" id="about">
   <h2>Was ich mache</h2>
-  <p>Ich helfe Wiener Unternehmen mit modernen Webseiten, professionellen Videos und KI-Automatisierung.</p>
+  <p>Als Komplettanbieter in Wien verbinde ich Premium Webdesign, cineastische Videoproduktion und KI-Automatisierung – alles aus einer Hand.</p>
 </section>
 
 <section class="services fade-in" id="services">
   <h2>Leistungen</h2>
   <div class="cards">
-    <div class="card">🌐 Premium Webseiten</div>
-    <div class="card">🎬 Videoproduktion</div>
-    <div class="card">🤖 KI-Automatisierung</div>
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <div class="card-title">Premium Webseiten</div>
+      <div class="card-text">Modern, schnell und auf dein Unternehmen zugeschnitten</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎬</div>
+      <div class="card-title">Videoproduktion</div>
+      <div class="card-text">Cineastische Imagefilme und Social Media Content</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤖</div>
+      <div class="card-title">KI-Automatisierung</div>
+      <div class="card-text">Prozesse automatisieren und Zeit sparen</div>
+    </div>
   </div>
 </section>
 
-  <section class="contact fade-in" id="contact">
+<section class="contact fade-in" id="contact">
   <h2>Kontakt</h2>
-  <p>Ich freue mich auf deine Nachricht!</p>
-  
+  <p style="color: #A9ABB3;">Lass uns dein Projekt besprechen.</p>
   <div class="form">
     <input type="text" id="name" placeholder="Dein Name">
     <input type="email" id="email" placeholder="Deine Email">
@@ -188,16 +311,30 @@ footer {
 </section>
 
 <footer>
-  <p>© 2026 Dein Name – Wien, Österreich</p>
-  <p class="footer-links">
-    <a href="#about">Über mich</a> · 
-    <a href="#services">Leistungen</a> · 
+  <div>© 2026 Dein Name – Wien</div>
+  <div class="footer-links">
+    <a href="#about">Über mich</a>
+    <a href="#services">Leistungen</a>
     <a href="#contact">Kontakt</a>
-  </p>
-</footer>  
+  </div>
+</footer>
+
 <script>
   function zeigeNachricht() {
-    alert("Danke für deinen Besuch!");
+    alert("Danke! Ich melde mich bald bei dir.");
+  }
+
+  function sendeFormular() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const nachricht = document.getElementById('nachricht').value;
+
+    if (name === '' || email === '' || nachricht === '') {
+      alert('Bitte alle Felder ausfüllen!');
+      return;
+    }
+
+    alert('Danke ' + name + '! Ich melde mich bald bei dir!');
   }
 
   const observer = new IntersectionObserver((entries) => {
@@ -209,19 +346,6 @@ footer {
   });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  function sendeFormular() {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const nachricht = document.getElementById('nachricht').value;
-
-  if (name === '' || email === '' || nachricht === '') {
-    alert('Bitte alle Felder ausfüllen!');
-    return;
-  }
-
-  alert('Danke ' + name + '! Ich melde mich bald bei dir!');
-}
 </script>
 </body>
 </html>
