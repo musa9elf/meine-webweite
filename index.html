@@ -2,40 +2,9 @@
 <html>
 <head>
 <title>Meine Visitenkarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-  .fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-  nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(26, 26, 46, 0.9);
-  padding: 20px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 20px;
-  font-size: 16px;
-}
-
-nav a:hover {
-  color: #00d4ff;
-}
-  tml {
+html {
   scroll-behavior: smooth;
 }
 body {
@@ -45,18 +14,34 @@ body {
   text-align: center;
   padding: 50px;
 }
-
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(26, 26, 46, 0.9);
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 16px;
+}
+nav a:hover {
+  color: #00d4ff;
+}
 h1 {
   color: #00d4ff;
   font-size: 40px;
   animation: glow 2s infinite;
 }
-
 p {
   font-size: 18px;
   color: #aaaaaa;
 }
-
 .button {
   background-color: #00d4ff;
   color: black;
@@ -66,13 +51,11 @@ p {
   font-size: 16px;
   transition: all 0.3s ease;
 }
-
 .button:hover {
   background-color: white;
   color: #1a1a2e;
   transform: scale(1.1);
 }
-
 @keyframes glow {
   0% { text-shadow: 0 0 10px #00d4ff; }
   50% { text-shadow: 0 0 30px #00d4ff; }
@@ -82,24 +65,20 @@ p {
   padding: 120px 20px;
   border-bottom: 1px solid #333;
 }
-
 .subtitle {
   font-size: 20px;
   color: #888;
   margin-bottom: 40px;
 }
-
 .about {
   padding: 80px 20px;
   max-width: 600px;
   margin: 0 auto;
   border-bottom: 1px solid #333;
 }
-
 .services {
   padding: 80px 20px;
 }
-
 .cards {
   display: flex;
   gap: 20px;
@@ -107,7 +86,6 @@ p {
   flex-wrap: wrap;
   margin-top: 40px;
 }
-
 .card {
   background-color: #16213e;
   padding: 40px 30px;
@@ -115,11 +93,19 @@ p {
   font-size: 18px;
   width: 200px;
 }
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 <body>
-<body>
-  <nav>
+<nav>
   <a href="#about">Über mich</a>
   <a href="#services">Leistungen</a>
   <a href="#contact">Kontakt</a>
@@ -131,12 +117,12 @@ p {
   <button class="button" onclick="zeigeNachricht()">Kontakt aufnehmen</button>
 </section>
 
-<section class="about">
+<section class="about fade-in" id="about">
   <h2>Was ich mache</h2>
   <p>Ich helfe Wiener Unternehmen mit modernen Webseiten, professionellen Videos und KI-Automatisierung.</p>
 </section>
 
-<section class="services">
+<section class="services fade-in" id="services">
   <h2>Leistungen</h2>
   <div class="cards">
     <div class="card">🌐 Premium Webseiten</div>
@@ -145,11 +131,7 @@ p {
   </div>
 </section>
 
-  <section class="about fade-in" id="about">
-<section class="services fade-in" id="services">
-
-</body>
-  <script>
+<script>
   function zeigeNachricht() {
     alert("Danke für deinen Besuch!");
   }
