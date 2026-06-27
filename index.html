@@ -145,6 +145,24 @@ p {
   </div>
 </section>
 
+  <section class="about fade-in" id="about">
+<section class="services fade-in" id="services">
+
 </body>
+  <script>
+  function zeigeNachricht() {
+    alert("Danke für deinen Besuch!");
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
