@@ -102,6 +102,32 @@ p {
   opacity: 1;
   transform: translateY(0);
 }
+  .contact {
+  padding: 80px 20px;
+  border-top: 1px solid #333;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 40px auto;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background-color: #16213e;
+  color: white;
+  font-size: 16px;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+textarea {
+  height: 150px;
+}
 </style>
 </head>
 <body>
@@ -131,6 +157,18 @@ p {
   </div>
 </section>
 
+  <section class="contact fade-in" id="contact">
+  <h2>Kontakt</h2>
+  <p>Ich freue mich auf deine Nachricht!</p>
+  
+  <div class="form">
+    <input type="text" id="name" placeholder="Dein Name">
+    <input type="email" id="email" placeholder="Deine Email">
+    <textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
+    <button class="button" onclick="sendeFormular()">Absenden</button>
+  </div>
+</section>
+  
 <script>
   function zeigeNachricht() {
     alert("Danke für deinen Besuch!");
@@ -145,6 +183,19 @@ p {
   });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function sendeFormular() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const nachricht = document.getElementById('nachricht').value;
+
+  if (name === '' || email === '' || nachricht === '') {
+    alert('Bitte alle Felder ausfüllen!');
+    return;
+  }
+
+  alert('Danke ' + name + '! Ich melde mich bald bei dir!');
+}
 </script>
 </body>
 </html>
