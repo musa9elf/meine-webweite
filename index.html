@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Durr i Durran – Premium Web & KI Wien</title>
+<title>M8 International Protection – Premium Security Wien</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 * {
@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background-color: #0B0B0C;
+  background-color: #0A0A0A;
   color: #FFFFFF;
   font-family: 'Inter', sans-serif;
   max-width: 1280px;
@@ -30,7 +30,7 @@ nav {
   transform: translateX(-50%);
   width: 100%;
   max-width: 1280px;
-  background-color: rgba(11, 11, 12, 0.85);
+  background-color: rgba(10, 10, 10, 0.90);
   backdrop-filter: blur(20px);
   padding: 20px 60px;
   display: flex;
@@ -38,12 +38,6 @@ nav {
   align-items: center;
   border-bottom: 1px solid #2B2D31;
   z-index: 100;
-}
-
-.nav-logo {
-  font-size: 18px;
-  font-weight: 700;
-  color: #FFFFFF;
 }
 
 .nav-links a {
@@ -55,24 +49,26 @@ nav {
 }
 
 .nav-links a:hover {
-  color: #FFFFFF;
+  color: #C9A84C;
 }
 
 /* HERO */
 .hero {
   padding: 180px 60px 120px;
   border-bottom: 1px solid #2B2D31;
+  text-align: center;
 }
 
 .hero-tag {
   display: inline-block;
-  background-color: #1C1C20;
-  border: 1px solid #2B2D31;
-  color: #A9ABB3;
+  background-color: #1A1A1A;
+  border: 1px solid #C9A84C;
+  color: #C9A84C;
   padding: 8px 16px;
   border-radius: 100px;
   font-size: 13px;
   margin-bottom: 30px;
+  letter-spacing: 2px;
 }
 
 h1 {
@@ -84,7 +80,7 @@ h1 {
 }
 
 .accent {
-  color: #4F7CFF;
+  color: #C9A84C;
 }
 
 .hero p {
@@ -96,22 +92,23 @@ h1 {
 }
 
 .button {
-  background-color: #4F7CFF;
-  color: white;
+  background-color: #C9A84C;
+  color: #0A0A0A;
   padding: 14px 32px;
   border-radius: 18px;
   border: none;
   font-size: 16px;
+  font-weight: 600;
   font-family: 'Inter', sans-serif;
   cursor: pointer;
   transition: all 0.4s ease;
-  box-shadow: 0 0 20px rgba(79, 124, 255, 0.3);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
 }
 
 .button:hover {
-  background-color: #6A92FF;
+  background-color: #E0BC5A;
   transform: scale(1.03);
-  box-shadow: 0 0 30px rgba(79, 124, 255, 0.5);
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.5);
 }
 
 /* ABOUT */
@@ -152,7 +149,7 @@ h2 {
 }
 
 .card {
-  background-color: #1C1C20;
+  background-color: #111111;
   border: 1px solid #2B2D31;
   padding: 40px 32px;
   border-radius: 24px;
@@ -164,8 +161,8 @@ h2 {
 
 .card:hover {
   transform: translateY(-8px);
-  border-color: #4F7CFF;
-  box-shadow: 0 20px 40px rgba(79, 124, 255, 0.15);
+  border-color: #C9A84C;
+  box-shadow: 0 20px 40px rgba(201, 168, 76, 0.15);
 }
 
 .card-icon {
@@ -177,10 +174,44 @@ h2 {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 8px;
+  color: #FFFFFF;
 }
 
 .card-text {
   font-size: 14px;
+  color: #A9ABB3;
+  line-height: 1.6;
+}
+
+/* WARUM M8 */
+.why {
+  padding: 120px 60px;
+  border-bottom: 1px solid #2B2D31;
+  text-align: center;
+}
+
+.why-grid {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+
+.why-item {
+  max-width: 250px;
+  text-align: center;
+}
+
+.why-number {
+  font-size: 48px;
+  font-weight: 700;
+  color: #C9A84C;
+  margin-bottom: 8px;
+}
+
+.why-text {
+  font-size: 15px;
   color: #A9ABB3;
   line-height: 1.6;
 }
@@ -204,7 +235,7 @@ input, textarea {
   padding: 16px 20px;
   border-radius: 16px;
   border: 1px solid #2B2D31;
-  background-color: #141416;
+  background-color: #111111;
   color: white;
   font-size: 15px;
   font-family: 'Inter', sans-serif;
@@ -213,12 +244,32 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-  border-color: #4F7CFF;
+  border-color: #C9A84C;
 }
 
 textarea {
   height: 150px;
   resize: none;
+}
+
+/* IMPRESSUM */
+.impressum {
+  padding: 80px 60px;
+  border-bottom: 1px solid #2B2D31;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.impressum h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.impressum p {
+  font-size: 14px;
+  color: #A9ABB3;
+  line-height: 1.8;
+  margin-bottom: 10px;
 }
 
 /* FOOTER */
@@ -239,7 +290,7 @@ footer {
 }
 
 .footer-links a:hover {
-  color: #FFFFFF;
+  color: #C9A84C;
 }
 
 /* ANIMATIONEN */
@@ -253,6 +304,8 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* MOBILE */
 @media (max-width: 768px) {
   nav {
     padding: 15px 20px;
@@ -271,11 +324,11 @@ footer {
     letter-spacing: -1px;
   }
 
-  .about, .services, .contact {
+  .about, .services, .contact, .why, .impressum {
     padding: 60px 20px;
   }
 
-  .cards {
+  .cards, .why-grid {
     flex-direction: column;
     align-items: center;
   }
@@ -296,79 +349,116 @@ footer {
   <div class="nav-links">
     <a href="#about">Über uns</a>
     <a href="#services">Leistungen</a>
+    <a href="#why">Warum M8</a>
     <a href="#contact">Kontakt</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-tag">✦ Wien, Österreich</div>
-  <h1>Premium Web<br><span class="accent">& KI Lösungen</span></h1>
-  <p>Wir helfe ihrem Unternehmen mit modernen Webseiten, professionellen Videos und KI-Automatisierung.</p>
-  <button class="button" onclick="zeigeNachricht()">Projekt starten</button>
+  <div class="hero-tag">✦ WIEN · ÖSTERREICH</div>
+  <h1>Sicherheit auf<br><span class="accent">höchstem Niveau</span></h1>
+  <p>M8 International Protection steht für diskrete, professionelle Sicherheitslösungen für 5-Sterne Hotels, Casinos und Exklusiv-Events in Wien.</p>
+  <button class="button" onclick="zeigeNachricht()">Jetzt anfragen</button>
 </section>
 
 <section class="about fade-in" id="about">
-  <h2>Was uns ausmach</h2>
-  <p>Als Komplettanbieter Verbinden wir Premium Webdesign, cineastische Videoproduktion und KI-Automatisierung – alles aus einer Hand.</p>
+  <h2>Wer wir sind</h2>
+  <p>M8 International Protection ist Ihr verlässlicher Partner für Premium-Sicherheit in Wien. Wir verbinden jahrelange Erfahrung mit modernsten Sicherheitsstandards – diskret, professionell und zuverlässig.</p>
 </section>
 
 <section class="services fade-in" id="services">
-  <h2>Leistungen</h2>
+  <h2>Unsere Leistungen</h2>
   <div class="cards">
     <div class="card">
-      <div class="card-icon">🌐</div>
-      <div class="card-title">Premium Webseiten</div>
-      <div class="card-text">Modern, schnell und auf dein Unternehmen zugeschnitten</div>
+      <div class="card-icon">🏨</div>
+      <div class="card-title">5-Sterne Hotel Security</div>
+      <div class="card-text">Diskreter Schutz für Ihre Gäste und Ihr Eigentum</div>
     </div>
     <div class="card">
-      <div class="card-icon">🎬</div>
-      <div class="card-title">Videoproduktion</div>
-      <div class="card-text">Cineastische Imagefilme und Social Media Content</div>
+      <div class="card-icon">🎰</div>
+      <div class="card-title">Casino Security</div>
+      <div class="card-text">Professionelle Sicherheit für Spielbanken und Glücksspiel</div>
     </div>
     <div class="card">
-      <div class="card-icon">🤖</div>
-      <div class="card-title">KI-Automatisierung</div>
-      <div class="card-text">Prozesse automatisieren und Zeit sparen</div>
+      <div class="card-icon">🎭</div>
+      <div class="card-title">Event Security</div>
+      <div class="card-text">Zuverlässiger Schutz für Ihre exklusiven Veranstaltungen</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔥</div>
+      <div class="card-title">Brandschutzwart</div>
+      <div class="card-text">Zertifizierte Brandschutzbeauftrage für Ihre Sicherheit</div>
+    </div>
+  </div>
+</section>
+
+<section class="why fade-in" id="why">
+  <h2>Warum M8?</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-number">100%</div>
+      <div class="why-text">Diskretion und Professionalität bei jedem Einsatz</div>
+    </div>
+    <div class="why-item">
+      <div class="why-number">24/7</div>
+      <div class="why-text">Rund um die Uhr erreichbar für Ihre Sicherheit</div>
+    </div>
+    <div class="why-item">
+      <div class="why-number">5★</div>
+      <div class="why-text">Ausgerichtet auf höchste Ansprüche und Standards</div>
     </div>
   </div>
 </section>
 
 <section class="contact fade-in" id="contact">
   <h2>Kontakt</h2>
-  <p style="color: #A9ABB3;">Lassen Sie uns ihren Projekt besprechen.</p>
+  <p style="color: #A9ABB3;">Lassen Sie uns Ihr Sicherheitskonzept besprechen.</p>
   <div class="form">
-    <input type="text" id="name" placeholder="Dein Name">
-    <input type="email" id="email" placeholder="Deine Email">
-    <textarea id="nachricht" placeholder="Deine Nachricht"></textarea>
-    <button class="button" onclick="sendeFormular()">Absenden</button>
+    <input type="text" id="name" placeholder="Name">
+    <input type="email" id="email" placeholder="E-Mail">
+    <input type="tel" id="tel" placeholder="Telefon">
+    <textarea id="nachricht" placeholder="Ihre Nachricht"></textarea>
+    <button class="button" onclick="sendeFormular()">Anfrage senden</button>
   </div>
 </section>
 
+<section class="impressum fade-in" id="impressum">
+  <h2>Impressum</h2>
+  <p><strong>M8 International Protection</strong></p>
+  <p>Wien, Österreich</p>
+  <p>E-Mail: office@m8-protection.at</p>
+  <p>Gewerbe: Sicherheitsgewerbe</p>
+  <p>Aufsichtsbehörde: Magistrat der Stadt Wien</p>
+  <p>Kammerzugehörigkeit: Wirtschaftskammer Wien</p>
+</section>
+
 <footer>
-  <div>© 2026 Durr i Durran – Wien</div>
+  <div>© 2026 M8 International Protection – Wien</div>
   <div class="footer-links">
     <a href="#about">Über uns</a>
     <a href="#services">Leistungen</a>
     <a href="#contact">Kontakt</a>
+    <a href="#impressum">Impressum</a>
   </div>
 </footer>
 
 <script>
   function zeigeNachricht() {
-    alert("Danke! Wir melden uns bald bei Ihnen.");
+    document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
   }
 
   function sendeFormular() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const tel = document.getElementById('tel').value;
     const nachricht = document.getElementById('nachricht').value;
 
     if (name === '' || email === '' || nachricht === '') {
-      alert('Bitte alle Felder ausfüllen!');
+      alert('Bitte Name, E-Mail und Nachricht ausfüllen!');
       return;
     }
 
-    alert('Danke ' + name + '! Wir melden uns bald bei Ihnen!');
+    alert('Danke ' + name + '! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
   }
 
   const observer = new IntersectionObserver((entries) => {
