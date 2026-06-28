@@ -344,10 +344,10 @@ footer {
   }
 
   window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const hero = document.querySelector('.hero');
-    hero.style.backgroundPositionY = scrolled * 0.4 + 'px';
-  });
+  const scrolled = window.scrollY;
+  const hero = document.querySelector('.hero');
+  hero.style.backgroundPositionY = `calc(center + ${scrolled * 0.3}px)`;
+});
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
