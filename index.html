@@ -340,6 +340,26 @@ footer {
     text-align: center;
   }
 }
+
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
 </style>
 </head>
 <body>
@@ -354,7 +374,7 @@ footer {
   </div>
 </nav>
 
-<section class="hero">
+<section class="hero" style="background-image: url('istockphoto-2216719945-1024x1024.jpg'); background-size: cover; background-position: center;">
   <div class="hero-tag">✦ WIEN · ÖSTERREICH</div>
   <h1>Sicherheit auf<br><span class="accent">höchstem Niveau</span></h1>
   <p>M8 International Protection steht für diskrete, professionelle Sicherheitslösungen für 5-Sterne Hotels, Casinos und Exklusiv-Events in Wien.</p>
