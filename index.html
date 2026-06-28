@@ -11,11 +11,6 @@ body {
   color: #FFFFFF;
   font-family: 'Inter', sans-serif;
 }
-
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-}
 nav {
   position: fixed;
   top: 0;
@@ -24,11 +19,11 @@ nav {
   width: 100%;
   background-color: rgba(10, 10, 10, 0.90);
   backdrop-filter: blur(20px);
-  padding: 20px 40px;
+  padding: 20px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #2B2D31;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   z-index: 100;
 }
 .nav-links a {
@@ -41,13 +36,13 @@ nav {
 .nav-links a:hover { color: #C9A84C; }
 .hero {
   padding: 180px 60px 120px;
-  border-bottom: 1px solid #2B2D31;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   text-align: center;
   background-image: url('02.jpg');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: #0A0A0A;
-  background-position: center;
+  background-position: center center;
   background-attachment: fixed;
   position: relative;
   min-height: 100vh;
@@ -65,7 +60,7 @@ nav {
 }
 .hero-tag {
   display: inline-block;
-  background-color: #1A1A1A;
+  background-color: #0A0A0A;
   border: 1px solid #C9A84C;
   color: #C9A84C;
   padding: 8px 16px;
@@ -80,6 +75,7 @@ h1 {
   line-height: 1.1;
   margin-bottom: 24px;
   letter-spacing: -2px;
+  color: #FFFFFF;
 }
 .accent { color: #C9A84C; }
 .hero p {
@@ -109,7 +105,7 @@ h1 {
 }
 .about {
   padding: 120px 60px;
-  border-bottom: 1px solid #2B2D31;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
@@ -119,11 +115,12 @@ h2 {
   font-weight: 700;
   margin-bottom: 20px;
   letter-spacing: -1px;
+  color: #FFFFFF;
 }
 .about p { font-size: 18px; color: #A9ABB3; line-height: 1.8; }
 .services {
   padding: 120px 60px;
-  border-bottom: 1px solid #2B2D31;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   text-align: center;
 }
 .cards {
@@ -135,7 +132,7 @@ h2 {
 }
 .card {
   background-color: #111111;
-  border: 1px solid #2B2D31;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 40px 32px;
   border-radius: 24px;
   width: 220px;
@@ -147,11 +144,11 @@ h2 {
   box-shadow: 0 20px 40px rgba(201, 168, 76, 0.15);
 }
 .card-icon { font-size: 36px; margin-bottom: 16px; }
-.card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #FFFFFF; }
 .card-text { font-size: 14px; color: #A9ABB3; line-height: 1.6; }
 .why {
   padding: 120px 60px;
-  border-bottom: 1px solid #2B2D31;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   text-align: center;
 }
 .why-grid {
@@ -166,7 +163,7 @@ h2 {
 .why-text { font-size: 15px; color: #A9ABB3; line-height: 1.6; }
 .contact {
   padding: 120px 60px;
-  border-bottom: 1px solid #2B2D31;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   text-align: center;
 }
 .form {
@@ -179,7 +176,7 @@ h2 {
 input, textarea {
   padding: 16px 20px;
   border-radius: 16px;
-  border: 1px solid #2B2D31;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   background-color: #111111;
   color: white;
   font-size: 15px;
@@ -191,11 +188,11 @@ input:focus, textarea:focus { border-color: #C9A84C; }
 textarea { height: 150px; resize: none; }
 .impressum {
   padding: 80px 60px;
-  border-bottom: 1px solid #2B2D31;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   max-width: 700px;
   margin: 0 auto;
 }
-.impressum h2 { font-size: 28px; margin-bottom: 20px; }
+.impressum h2 { font-size: 28px; margin-bottom: 20px; color: #FFFFFF; }
 .impressum p { font-size: 14px; color: #A9ABB3; line-height: 1.8; margin-bottom: 10px; }
 footer {
   padding: 40px 60px;
@@ -346,10 +343,11 @@ footer {
   }
 
   window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  const hero = document.querySelector('.hero');
-  hero.style.backgroundPositionY = `calc(center + ${scrolled * 0.3}px)`;
-});
+    const scrolled = window.scrollY;
+    const hero = document.querySelector('.hero');
+    const offset = 50 + scrolled * 0.3;
+    hero.style.backgroundPositionY = offset + '%';
+  });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
