@@ -4,16 +4,8 @@
 <title>M8 International Protection – Premium Security Wien</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   background-color: #0A0A0A;
   color: #FFFFFF;
@@ -21,8 +13,6 @@ body {
   max-width: 1280px;
   margin: 0 auto;
 }
-
-/* NAV */
 nav {
   position: fixed;
   top: 0;
@@ -39,7 +29,6 @@ nav {
   border-bottom: 1px solid #2B2D31;
   z-index: 100;
 }
-
 .nav-links a {
   color: #A9ABB3;
   text-decoration: none;
@@ -47,15 +36,29 @@ nav {
   font-size: 15px;
   transition: color 0.3s ease;
 }
-
-.nav-links a:hover {
-  color: #C9A84C;
+.nav-links a:hover { color: #C9A84C; }
+.hero {
+  padding: 180px 60px 120px;
+  border-bottom: 1px solid #2B2D31;
+  text-align: center;
+  background-image: url('istockphoto-2216719945-1024x1024.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  min-height: 100vh;
 }
-
-/* HERO */
-<section class="hero" style="background-image: url('istockphoto-2216719945-1024x1024.jpg'); background-size: cover; background-position: center top;">
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
 }
-
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
 .hero-tag {
   display: inline-block;
   background-color: #1A1A1A;
@@ -67,7 +70,6 @@ nav {
   margin-bottom: 30px;
   letter-spacing: 2px;
 }
-
 h1 {
   font-size: 72px;
   font-weight: 700;
@@ -75,11 +77,7 @@ h1 {
   margin-bottom: 24px;
   letter-spacing: -2px;
 }
-
-.accent {
-  color: #C9A84C;
-}
-
+.accent { color: #C9A84C; }
 .hero p {
   font-size: 20px;
   color: #A9ABB3;
@@ -87,7 +85,6 @@ h1 {
   margin: 0 auto 40px;
   line-height: 1.7;
 }
-
 .button {
   background-color: #C9A84C;
   color: #0A0A0A;
@@ -101,14 +98,11 @@ h1 {
   transition: all 0.4s ease;
   box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
 }
-
 .button:hover {
   background-color: #E0BC5A;
   transform: scale(1.03);
   box-shadow: 0 0 30px rgba(201, 168, 76, 0.5);
 }
-
-/* ABOUT */
 .about {
   padding: 120px 60px;
   border-bottom: 1px solid #2B2D31;
@@ -116,27 +110,18 @@ h1 {
   margin: 0 auto;
   text-align: center;
 }
-
 h2 {
   font-size: 42px;
   font-weight: 700;
   margin-bottom: 20px;
   letter-spacing: -1px;
 }
-
-.about p {
-  font-size: 18px;
-  color: #A9ABB3;
-  line-height: 1.8;
-}
-
-/* SERVICES */
+.about p { font-size: 18px; color: #A9ABB3; line-height: 1.8; }
 .services {
   padding: 120px 60px;
   border-bottom: 1px solid #2B2D31;
   text-align: center;
 }
-
 .cards {
   display: flex;
   gap: 24px;
@@ -144,49 +129,27 @@ h2 {
   flex-wrap: wrap;
   margin-top: 60px;
 }
-
 .card {
   background-color: #111111;
   border: 1px solid #2B2D31;
   padding: 40px 32px;
   border-radius: 24px;
-  font-size: 16px;
   width: 220px;
   transition: all 0.4s ease;
-  cursor: default;
 }
-
 .card:hover {
   transform: translateY(-8px);
   border-color: #C9A84C;
   box-shadow: 0 20px 40px rgba(201, 168, 76, 0.15);
 }
-
-.card-icon {
-  font-size: 36px;
-  margin-bottom: 16px;
-}
-
-.card-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #FFFFFF;
-}
-
-.card-text {
-  font-size: 14px;
-  color: #A9ABB3;
-  line-height: 1.6;
-}
-
-/* WARUM M8 */
+.card-icon { font-size: 36px; margin-bottom: 16px; }
+.card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.card-text { font-size: 14px; color: #A9ABB3; line-height: 1.6; }
 .why {
   padding: 120px 60px;
   border-bottom: 1px solid #2B2D31;
   text-align: center;
 }
-
 .why-grid {
   display: flex;
   gap: 24px;
@@ -194,32 +157,14 @@ h2 {
   flex-wrap: wrap;
   margin-top: 60px;
 }
-
-.why-item {
-  max-width: 250px;
-  text-align: center;
-}
-
-.why-number {
-  font-size: 48px;
-  font-weight: 700;
-  color: #C9A84C;
-  margin-bottom: 8px;
-}
-
-.why-text {
-  font-size: 15px;
-  color: #A9ABB3;
-  line-height: 1.6;
-}
-
-/* CONTACT */
+.why-item { max-width: 250px; text-align: center; }
+.why-number { font-size: 48px; font-weight: 700; color: #C9A84C; margin-bottom: 8px; }
+.why-text { font-size: 15px; color: #A9ABB3; line-height: 1.6; }
 .contact {
   padding: 120px 60px;
   border-bottom: 1px solid #2B2D31;
   text-align: center;
 }
-
 .form {
   display: flex;
   flex-direction: column;
@@ -227,7 +172,6 @@ h2 {
   margin: 60px auto 0;
   gap: 16px;
 }
-
 input, textarea {
   padding: 16px 20px;
   border-radius: 16px;
@@ -239,37 +183,16 @@ input, textarea {
   transition: border 0.3s ease;
   outline: none;
 }
-
-input:focus, textarea:focus {
-  border-color: #C9A84C;
-}
-
-textarea {
-  height: 150px;
-  resize: none;
-}
-
-/* IMPRESSUM */
+input:focus, textarea:focus { border-color: #C9A84C; }
+textarea { height: 150px; resize: none; }
 .impressum {
   padding: 80px 60px;
   border-bottom: 1px solid #2B2D31;
   max-width: 700px;
   margin: 0 auto;
 }
-
-.impressum h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.impressum p {
-  font-size: 14px;
-  color: #A9ABB3;
-  line-height: 1.8;
-  margin-bottom: 10px;
-}
-
-/* FOOTER */
+.impressum h2 { font-size: 28px; margin-bottom: 20px; }
+.impressum p { font-size: 14px; color: #A9ABB3; line-height: 1.8; margin-bottom: 10px; }
 footer {
   padding: 40px 60px;
   display: flex;
@@ -278,84 +201,27 @@ footer {
   color: #A9ABB3;
   font-size: 14px;
 }
-
 .footer-links a {
   color: #A9ABB3;
   text-decoration: none;
   margin-left: 24px;
   transition: color 0.3s ease;
 }
-
-.footer-links a:hover {
-  color: #C9A84C;
-}
-
-/* ANIMATIONEN */
+.footer-links a:hover { color: #C9A84C; }
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* MOBILE */
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 @media (max-width: 768px) {
-  nav {
-    padding: 15px 20px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .hero {
-    padding: 120px 20px 80px;
-  }
-
-  h1 {
-    font-size: 40px;
-    letter-spacing: -1px;
-  }
-
-  .about, .services, .contact, .why, .impressum {
-    padding: 60px 20px;
-  }
-
-  .cards, .why-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  footer {
-    flex-direction: column;
-    gap: 16px;
-    padding: 40px 20px;
-    text-align: center;
-  }
-}
-
-.hero {
-  position: relative;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1;
-}
-
-.hero > * {
-  position: relative;
-  z-index: 2;
+  nav { padding: 15px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 120px 20px 80px; background-attachment: scroll; }
+  h1 { font-size: 40px; letter-spacing: -1px; }
+  .about, .services, .contact, .why, .impressum { padding: 60px 20px; }
+  .cards, .why-grid { flex-direction: column; align-items: center; }
+  footer { flex-direction: column; gap: 16px; padding: 40px 20px; text-align: center; }
 }
 </style>
 </head>
@@ -371,7 +237,7 @@ footer {
   </div>
 </nav>
 
-<section class="hero"
+<section class="hero">
   <div class="hero-tag">✦ WIEN · ÖSTERREICH</div>
   <h1>Sicherheit auf<br><span class="accent">höchstem Niveau</span></h1>
   <p>M8 International Protection steht für diskrete, professionelle Sicherheitslösungen für 5-Sterne Hotels, Casinos und Exklusiv-Events in Wien.</p>
@@ -404,7 +270,7 @@ footer {
     <div class="card">
       <div class="card-icon">🔥</div>
       <div class="card-title">Brandschutzwart</div>
-      <div class="card-text">Zertifizierte Brandschutzbeauftrage für Ihre Sicherheit</div>
+      <div class="card-text">Zertifizierte Brandschutzbeauftragte für Ihre Sicherheit</div>
     </div>
   </div>
 </section>
@@ -467,25 +333,25 @@ footer {
   function sendeFormular() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
-    const tel = document.getElementById('tel').value;
     const nachricht = document.getElementById('nachricht').value;
-
     if (name === '' || email === '' || nachricht === '') {
       alert('Bitte Name, E-Mail und Nachricht ausfüllen!');
       return;
     }
-
     alert('Danke ' + name + '! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const hero = document.querySelector('.hero');
+    hero.style.backgroundPositionY = scrolled * 0.4 + 'px';
   });
 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 </body>
