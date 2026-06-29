@@ -84,16 +84,11 @@ body {
 }
 
 @keyframes slideIn {
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1; }
 }
 
 /* PROGRESS */
@@ -133,7 +128,7 @@ nav img {
   font-size: 14px;
 }
 
-/* HERO */
+/* HERO (FIX: unter Navbar sauber) */
 .hero {
   height: 100vh;
   position: relative;
@@ -142,9 +137,10 @@ nav img {
   justify-content: center;
   text-align: center;
   overflow: hidden;
+
+  margin-top: 70px; /* 🔥 wichtig: startet unter Nav */
 }
 
-/* BACKGROUND LAYER (PARALLAX) */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -152,8 +148,8 @@ nav img {
   background-size: cover;
   background-position: center;
   transform: scale(1.1);
-  will-change: transform;
   z-index: 0;
+  will-change: transform;
 }
 
 .hero-overlay {
@@ -163,7 +159,6 @@ nav img {
   z-index: 1;
 }
 
-/* TEXT */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -210,12 +205,7 @@ h1 span {
   font-weight: 600;
   cursor: pointer;
   color: #0a0a0a;
-  transition: 0.3s;
   box-shadow: 0 0 25px rgba(201,168,76,0.25);
-}
-
-.btn:hover {
-  transform: scale(1.05);
 }
 
 /* SECTIONS */
@@ -235,7 +225,7 @@ p {
   line-height: 1.7;
 }
 
-/* GRID */
+/* CARDS (FIX: schwarz + Rand statt weiß) */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -244,10 +234,17 @@ p {
 }
 
 .card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.05);
+  background: #0f0f0f;
+  border: 1px solid rgba(255,255,255,0.08);
   padding: 30px;
   border-radius: 18px;
+  color: #ddd;
+  transition: 0.3s;
+}
+
+.card:hover {
+  border-color: #C9A84C;
+  transform: translateY(-6px);
 }
 
 /* STATS */
@@ -264,6 +261,25 @@ p {
   color: #C9A84C;
 }
 
+/* CONTACT FIX */
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #777;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
 /* FADE */
 .fade {
   opacity: 0;
@@ -276,24 +292,24 @@ p {
   transform: translateY(0);
 }
 
-/* MOBILE */
+/* MOBILE FIX */
 @media (max-width: 768px) {
 
-  h1 {
-    font-size: 38px;
-  }
+  h1 { font-size: 38px; }
 
   nav {
     padding: 15px 20px;
   }
 
-  /* LOGO FIX: weiter links + optisch mittig */
   nav img {
-    height: 32px;
     margin-left: -10px;
+    height: 32px;
   }
 
-  /* HERO mobile parallax stabil */
+  .hero {
+    margin-top: 65px;
+  }
+
   .hero-bg {
     background-position: center 20%;
     transform: scale(1.25);
@@ -305,6 +321,16 @@ p {
 
   .intro-inner .logo {
     font-size: 110px;
+  }
+
+  /* CONTACT FIX: alles untereinander sauber */
+  input, textarea {
+    display: block;
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -399,17 +425,17 @@ const observer = new IntersectionObserver(entries => {
 });
 faders.forEach(el => observer.observe(el));
 
-// progress
+// progress + parallax
 window.addEventListener('scroll', () => {
   const scrollTop = document.documentElement.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+
   document.getElementById('progress').style.width =
     (scrollTop / scrollHeight) * 100 + "%";
 
-  // PARALLAX EFFECT
   const bg = document.querySelector('.hero-bg');
   if (bg) {
-    bg.style.transform = `translateY(${scrollTop * 0.2}px) scale(1.1)`;
+    bg.style.transform = `translateY(${scrollTop * 0.15}px) scale(1.1)`;
   }
 });
 </script>
