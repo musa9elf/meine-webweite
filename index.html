@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>M8 International Protection – Premium Security Wien</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,7 +40,7 @@ nav {
   border-bottom: none;
   text-align: center;
   background-image: url('02.jpg');
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
   background-attachment: scroll;
   background-repeat: no-repeat;
@@ -219,52 +219,22 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 15px 20px; }
   .nav-links { display: none; }
-  .hero { 
-    padding: 120px 20px 80px; 
-    background-attachment: scroll;
+  .hero {
+    padding: 120px 20px 80px;
     background-image: url('mobile.jpg');
     background-size: cover;
     background-position: center center;
+    background-attachment: scroll;
+    min-height: 100svh;
   }
   h1 { font-size: 40px; letter-spacing: -1px; }
   .about, .services, .contact, .why, .impressum { padding: 60px 20px; }
   .cards, .why-grid { flex-direction: column; align-items: center; }
   footer { flex-direction: column; gap: 16px; padding: 40px 20px; text-align: center; }
 }
-
-  .hero {
-    padding: 100px 20px 80px;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: scroll;
-    min-height: 100svh;
-  }
-
-  h1 {
-    font-size: 40px;
-    letter-spacing: -1px;
-  }
-
-  .about, .services, .contact, .why, .impressum {
-    padding: 60px 20px;
-  }
-
-  .cards, .why-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  footer {
-    flex-direction: column;
-    gap: 16px;
-    padding: 40px 20px;
-    text-align: center;
-  }
-}
 </style>
 </head>
 <body>
-
 <nav>
   <img src="2.png" height="40" alt="M8 International Protection">
   <div class="nav-links">
@@ -367,7 +337,6 @@ footer {
   function zeigeNachricht() {
     document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
   }
-
   function sendeFormular() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
@@ -378,14 +347,12 @@ footer {
     }
     alert('Danke ' + name + '! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
   }
-
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     const hero = document.querySelector('.hero');
     const offset = 50 + scrolled * 0.3;
     hero.style.backgroundPositionY = offset + '%';
   });
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
