@@ -295,21 +295,27 @@ footer {
 /* MOBILE FIX */
 @media (max-width: 768px) {
 
-  h1 { font-size: 38px; }
+  h1 {
+    font-size: 38px;
+  }
 
   nav {
     padding: 15px 20px;
+    overflow: hidden; /* 🔥 verhindert das „überbordende“ Element */
   }
 
+  /* LOGO FIX: sauber zentriert */
   nav img {
-    margin-left: -10px;
-    height: 32px;
+    height: 36px;
+    margin-left: 0;
+    transform: translateX(-4px); /* optisch perfekt mittig */
   }
 
-  .hero {
-    margin-top: 65px;
+  .nav-links {
+    display: none; /* verhindert Überlauf komplett */
   }
 
+  /* HERO */
   .hero-bg {
     background-position: center 20%;
     transform: scale(1.25);
@@ -320,8 +326,9 @@ footer {
   }
 
   .intro-inner .logo {
-    font-size: 110px;
+    font-size: 120px;
   }
+}
 
   /* CONTACT FIX: alles untereinander sauber */
   input, textarea {
