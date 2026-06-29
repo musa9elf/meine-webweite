@@ -119,6 +119,7 @@ nav {
 
 nav img {
   height: 38px;
+  transition: transform 0.2s ease;
 }
 
 .nav-links a {
@@ -189,6 +190,7 @@ h1 span {
   color: #aaa;
 }
 
+/* BUTTON */
 .btn {
   margin-top: 30px;
   background: #C9A84C;
@@ -216,7 +218,7 @@ p {
   line-height: 1.7;
 }
 
-/* GRID */
+/* GRID CARDS */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -243,18 +245,6 @@ p {
   transform: translateY(0);
 }
 
-/* INPUTS FIX (nur funktional, Optik bleibt dunkel premium) */
-input, textarea {
-  width: 100%;
-  margin-top: 10px;
-  padding: 14px;
-  background: #0f0f0f;
-  border: 1px solid rgba(255,255,255,0.1);
-  color: white;
-  border-radius: 10px;
-  outline: none;
-}
-
 /* FOOTER */
 footer {
   text-align: center;
@@ -262,7 +252,7 @@ footer {
   color: #777;
 }
 
-/* MOBILE FIX (nur kleine Korrektur, kein Designbruch) */
+/* MOBILE FIX (IMPORTANT) */
 @media (max-width: 768px) {
 
   h1 {
@@ -271,6 +261,13 @@ footer {
 
   nav {
     padding: 15px 20px;
+    overflow: hidden;
+  }
+
+  /* 🔥 LOGO FIX - garantiert sichtbar links verschoben */
+  nav img {
+    height: 34px;
+    transform: translateX(-14px) !important;
   }
 
   .nav-links {
@@ -289,12 +286,17 @@ footer {
   .intro-inner .logo {
     font-size: 110px;
   }
+
+  body {
+    overflow-x: hidden;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- INTRO -->
 <div id="intro">
   <div class="intro-inner">
     <div class="logo">
@@ -345,11 +347,9 @@ footer {
 
 <section id="contact" class="fade">
   <h2>Kontakt</h2>
-  <form>
-    <input type="text" placeholder="Name">
-    <input type="email" placeholder="E-Mail">
-    <textarea placeholder="Nachricht"></textarea>
-  </form>
+  <input placeholder="Name">
+  <input placeholder="E-Mail">
+  <textarea placeholder="Nachricht"></textarea>
 </section>
 
 <footer>
@@ -364,30 +364,24 @@ window.addEventListener("load", () => {
   }, 1800);
 });
 
-const heroBg = document.querySelector('.hero-bg');
 const faders = document.querySelectorAll('.fade');
-const progressBar = document.getElementById('progress');
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) e.target.classList.add('show');
   });
-}, { threshold: 0.2 });
-
+});
 faders.forEach(el => observer.observe(el));
 
 window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
+  const scrollTop = document.documentElement.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-  const progress = scrollHeight > 0
-    ? (scrollTop / scrollHeight) * 100
-    : 0;
+  document.getElementById('progress').style.width =
+    (scrollTop / scrollHeight) * 100 + "%";
 
-  progressBar.style.width = progress + "%";
-
-  if (heroBg) {
-    heroBg.style.transform = `translateY(${scrollTop * 0.15}px) scale(1.1)`;
+  const bg = document.querySelector('.hero-bg');
+  if (bg) {
+    bg.style.transform = `translateY(${scrollTop * 0.15}px) scale(1.1)`;
   }
 });
 </script>
