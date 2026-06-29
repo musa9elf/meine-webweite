@@ -131,11 +131,6 @@ nav img {
   color: #aaa;
   text-decoration: none;
   font-size: 14px;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  color: #C9A84C;
 }
 
 /* HERO */
@@ -147,11 +142,18 @@ nav img {
   justify-content: center;
   text-align: center;
   overflow: hidden;
+}
 
+/* BACKGROUND LAYER (PARALLAX) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
   background-image: url("M82.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  transform: scale(1.1);
+  will-change: transform;
+  z-index: 0;
 }
 
 .hero-overlay {
@@ -161,6 +163,7 @@ nav img {
   z-index: 1;
 }
 
+/* TEXT */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -197,7 +200,7 @@ h1 span {
   line-height: 1.6;
 }
 
-/* BUTTON FIX */
+/* BUTTON */
 .btn {
   margin-top: 30px;
   background: #C9A84C;
@@ -206,9 +209,9 @@ h1 span {
   border-radius: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
   color: #0a0a0a;
-  box-shadow: 0 0 25px rgba(201, 168, 76, 0.25);
+  transition: 0.3s;
+  box-shadow: 0 0 25px rgba(201,168,76,0.25);
 }
 
 .btn:hover {
@@ -232,7 +235,7 @@ p {
   line-height: 1.7;
 }
 
-/* CARDS */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -245,12 +248,6 @@ p {
   border: 1px solid rgba(255,255,255,0.05);
   padding: 30px;
   border-radius: 18px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  border-color: #C9A84C;
 }
 
 /* STATS */
@@ -262,36 +259,9 @@ p {
   flex-wrap: wrap;
 }
 
-.stat {
-  text-align: center;
-}
-
 .stat h3 {
   font-size: 42px;
   color: #C9A84C;
-}
-
-/* CONTACT */
-input, textarea {
-  width: 100%;
-  padding: 14px;
-  margin-top: 10px;
-  background: #111;
-  border: 1px solid rgba(255,255,255,0.1);
-  color: white;
-  border-radius: 10px;
-}
-
-textarea {
-  height: 140px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #777;
-  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 /* FADE */
@@ -306,57 +276,28 @@ footer {
   transform: translateY(0);
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 @media (max-width: 768px) {
 
-  /* TYPO */
   h1 {
     font-size: 38px;
   }
 
-  /* NAV */
   nav {
     padding: 15px 20px;
   }
 
-  nav img {
-    margin-left: -6px;
+  .hero-bg {
+    background-position: center 20%;
+    transform: scale(1.25);
   }
 
-  /* HERO FIX */
-  .hero {
-    height: 100vh;
-    background-size: 130%;
-    background-position: center 80px;
-    background-repeat: no-repeat;
-    background-color: #0a0a0a;
-  }
-
-  .hero-content {
-    padding-top: 40px;
-  }
-
-  /* SECTIONS */
   section {
     padding: 80px 20px;
   }
 
-  /* INTRO LOGO */
   .intro-inner .logo {
     font-size: 110px;
-  }
-
-  .intro-inner .sub {
-    font-size: 14px;
-    letter-spacing: 6px;
-  }
-
-  /* BUTTON mobile clean */
-  .btn {
-    width: 100%;
-    max-width: 280px;
-    margin-inline: auto;
-    display: block;
   }
 }
 </style>
@@ -387,15 +328,14 @@ footer {
 </nav>
 
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
     <div class="tag">WIEN · INTERNATIONAL PROTECTION</div>
     <h1>Sicherheit auf <span>Elite Niveau</span></h1>
     <p>Diskrete, professionelle Sicherheitslösungen für Hotels, Events und exklusive Kunden in Österreich.</p>
-    <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-      Kontakt aufnehmen
-    </button>
+    <button class="btn">Kontakt aufnehmen</button>
   </div>
 </section>
 
@@ -406,7 +346,6 @@ footer {
 
 <section id="services" class="fade">
   <h2>Leistungen</h2>
-
   <div class="grid">
     <div class="card">Hotel</div>
     <div class="card">Events</div>
@@ -417,31 +356,18 @@ footer {
 
 <section class="fade">
   <h2>Warum wir</h2>
-
   <div class="stats">
-    <div class="stat">
-      <h3>24/7</h3>
-      <p>Erreichbarkeit</p>
-    </div>
-    <div class="stat">
-      <h3>100%</h3>
-      <p>Diskretion</p>
-    </div>
-    <div class="stat">
-      <h3>Elite</h3>
-      <p>Standard</p>
-    </div>
+    <div class="stat"><h3>24/7</h3></div>
+    <div class="stat"><h3>100%</h3></div>
+    <div class="stat"><h3>Elite</h3></div>
   </div>
 </section>
 
 <section id="contact" class="fade">
   <h2>Kontakt</h2>
-
   <input placeholder="Name">
   <input placeholder="E-Mail">
   <textarea placeholder="Nachricht"></textarea>
-
-  <button class="btn" style="margin-top:20px;">Senden</button>
 </section>
 
 <footer>
@@ -449,37 +375,35 @@ footer {
 </footer>
 
 <script>
-// intro fade out fast zoom
+// intro
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("intro").classList.add("hide");
-
-    setTimeout(() => {
-      document.getElementById("intro").style.display = "none";
-    }, 700);
-
+    setTimeout(() => document.getElementById("intro").remove(), 800);
   }, 1800);
 });
 
-// fade sections
+// fade
 const faders = document.querySelectorAll('.fade');
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-    }
+    if (e.isIntersecting) e.target.classList.add('show');
   });
 });
-
 faders.forEach(el => observer.observe(el));
 
-// progress bar
+// progress
 window.addEventListener('scroll', () => {
   const scrollTop = document.documentElement.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
   document.getElementById('progress').style.width =
     (scrollTop / scrollHeight) * 100 + "%";
+
+  // PARALLAX EFFECT
+  const bg = document.querySelector('.hero-bg');
+  if (bg) {
+    bg.style.transform = `translateY(${scrollTop * 0.2}px) scale(1.1)`;
+  }
 });
 </script>
 
