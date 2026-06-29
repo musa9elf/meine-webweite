@@ -40,7 +40,7 @@ body {
 
 #intro.hide {
   opacity: 0;
-  transform: scale(1.25);
+  transform: scale(1.2);
   pointer-events: none;
 }
 
@@ -50,7 +50,7 @@ body {
 }
 
 .intro-inner .logo {
-  font-size: 240px;
+  font-size: clamp(80px, 12vw, 240px);
   font-weight: 700;
   letter-spacing: 14px;
   display: flex;
@@ -59,24 +59,23 @@ body {
 }
 
 .intro-inner .logo span {
-  display: inline-block;
   opacity: 0;
   animation: slideIn 1.2s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
 }
 
 .intro-inner .logo span:first-child {
-  transform: translateX(-140px);
+  transform: translateX(-120px);
 }
 
 .intro-inner .logo span:last-child {
-  transform: translateX(140px);
-  animation-delay: 0.12s;
+  transform: translateX(120px);
+  animation-delay: 0.1s;
 }
 
 .intro-inner .sub {
-  margin-top: 25px;
-  font-size: 18px;
-  letter-spacing: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+  letter-spacing: 6px;
   color: #aaa;
   opacity: 0;
   animation: fadeIn 1.2s ease forwards;
@@ -119,7 +118,6 @@ nav {
 
 nav img {
   height: 38px;
-  transition: transform 0.2s ease;
 }
 
 .nav-links a {
@@ -147,14 +145,13 @@ nav img {
   background-size: cover;
   background-position: center;
   transform: scale(1.1);
-  z-index: 0;
+  will-change: transform;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center, rgba(0,0,0,0.3), rgba(0,0,0,0.85));
-  z-index: 1;
 }
 
 .hero-content {
@@ -190,7 +187,6 @@ h1 span {
   color: #aaa;
 }
 
-/* BUTTON */
 .btn {
   margin-top: 30px;
   background: #C9A84C;
@@ -199,7 +195,6 @@ h1 span {
   border-radius: 14px;
   font-weight: 600;
   cursor: pointer;
-  color: #0a0a0a;
 }
 
 /* SECTIONS */
@@ -218,7 +213,7 @@ p {
   line-height: 1.7;
 }
 
-/* GRID CARDS */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -230,14 +225,30 @@ p {
   border: 1px solid rgba(255,255,255,0.08);
   padding: 30px;
   border-radius: 18px;
-  color: #ddd;
+}
+
+/* FORM */
+form {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  background: #0f0f0f;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 10px;
+  outline: none;
 }
 
 /* FADE */
 .fade {
   opacity: 0;
-  transform: translateY(40px);
-  transition: 1s;
+  transform: translateY(30px);
+  transition: 0.8s ease;
 }
 
 .fade.show {
@@ -252,7 +263,7 @@ footer {
   color: #777;
 }
 
-/* MOBILE FIX (IMPORTANT) */
+/* MOBILE */
 @media (max-width: 768px) {
 
   h1 {
@@ -261,34 +272,19 @@ footer {
 
   nav {
     padding: 15px 20px;
-    overflow: hidden;
-  }
-
-  /* 🔥 LOGO FIX - garantiert sichtbar links verschoben */
-  nav img {
-    height: 34px;
-    transform: translateX(-14px) !important;
   }
 
   .nav-links {
     display: none;
   }
 
-  .hero-bg {
-    background-position: center 25%;
-    transform: scale(1.25);
-  }
-
   section {
     padding: 80px 20px;
   }
 
-  .intro-inner .logo {
-    font-size: 110px;
-  }
-
-  body {
-    overflow-x: hidden;
+  .hero-bg {
+    background-position: center 25%;
+    transform: scale(1.2);
   }
 }
 </style>
@@ -296,7 +292,6 @@ footer {
 
 <body>
 
-<!-- INTRO -->
 <div id="intro">
   <div class="intro-inner">
     <div class="logo">
@@ -347,9 +342,12 @@ footer {
 
 <section id="contact" class="fade">
   <h2>Kontakt</h2>
-  <input placeholder="Name">
-  <input placeholder="E-Mail">
-  <textarea placeholder="Nachricht"></textarea>
+
+  <form>
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="E-Mail">
+    <textarea placeholder="Nachricht"></textarea>
+  </form>
 </section>
 
 <footer>
@@ -361,27 +359,33 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("intro").classList.add("hide");
     setTimeout(() => document.getElementById("intro").remove(), 800);
-  }, 1800);
+  }, 1600);
 });
 
+const heroBg = document.querySelector('.hero-bg');
 const faders = document.querySelectorAll('.fade');
+const progressBar = document.getElementById('progress');
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) e.target.classList.add('show');
   });
-});
+}, { threshold: 0.2 });
+
 faders.forEach(el => observer.observe(el));
 
 window.addEventListener('scroll', () => {
-  const scrollTop = document.documentElement.scrollTop;
+  const scrollTop = window.scrollY;
   const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-  document.getElementById('progress').style.width =
-    (scrollTop / scrollHeight) * 100 + "%";
+  const progress = scrollHeight > 0
+    ? (scrollTop / scrollHeight) * 100
+    : 0;
 
-  const bg = document.querySelector('.hero-bg');
-  if (bg) {
-    bg.style.transform = `translateY(${scrollTop * 0.15}px) scale(1.1)`;
+  progressBar.style.width = progress + "%";
+
+  if (heroBg) {
+    heroBg.style.transform = `translateY(${scrollTop * 0.15}px) scale(1.1)`;
   }
 });
 </script>
