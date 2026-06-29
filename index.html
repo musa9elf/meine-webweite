@@ -35,12 +35,12 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 99999;
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 #intro.hide {
   opacity: 0;
-  transform: scale(1.05);
+  transform: scale(1.25);
   pointer-events: none;
 }
 
@@ -49,9 +49,8 @@ body {
   color: #C9A84C;
 }
 
-/* M8 4x größer */
 .intro-inner .logo {
-  font-size: 260px; /* vorher ~140px → jetzt deutlich größer */
+  font-size: 240px;
   font-weight: 700;
   letter-spacing: 14px;
   display: flex;
@@ -62,19 +61,18 @@ body {
 .intro-inner .logo span {
   display: inline-block;
   opacity: 0;
-  transform: translateX(120px);
-  animation: slideIn 1.4s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+  animation: slideIn 1.2s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
 }
 
 .intro-inner .logo span:first-child {
-  transform: translateX(-120px);
+  transform: translateX(-140px);
 }
 
 .intro-inner .logo span:last-child {
-  animation-delay: 0.15s;
+  transform: translateX(140px);
+  animation-delay: 0.12s;
 }
 
-/* TEXT UNTER M8 */
 .intro-inner .sub {
   margin-top: 25px;
   font-size: 18px;
@@ -82,7 +80,7 @@ body {
   color: #aaa;
   opacity: 0;
   animation: fadeIn 1.2s ease forwards;
-  animation-delay: 0.9s;
+  animation-delay: 0.8s;
 }
 
 @keyframes slideIn {
@@ -140,7 +138,7 @@ nav img {
   color: #C9A84C;
 }
 
-/* HERO */
+/* HERO FIX (MOBILE SAFE) */
 .hero {
   height: 100vh;
   position: relative;
@@ -149,18 +147,12 @@ nav img {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-}
 
-.hero img {
-  position: absolute;
-  width: 100%;
-  height: 120%;
-  object-fit: cover;
-  top: -10%;
-  left: 0;
-  z-index: 0;
-  transform: scale(1.1);
-  filter: brightness(0.55);
+  /* FIX: kein img tag mehr für background */
+  background-image: url("M82.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-overlay {
@@ -318,16 +310,12 @@ footer {
   nav { padding: 15px 20px; }
   .nav-links { display: none; }
 
-  .hero img {
-    content: url("2.jpg");
-  }
-
   section {
     padding: 80px 20px;
   }
 
   .intro-inner .logo {
-    font-size: 120px;
+    font-size: 110px;
   }
 }
 </style>
@@ -358,7 +346,6 @@ footer {
 </nav>
 
 <section class="hero">
-  <img src="M82.png" alt="Security">
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
@@ -373,9 +360,7 @@ footer {
 
 <section id="about" class="fade">
   <h2>Wer wir sind</h2>
-  <p>
-    M8 International Protection steht für moderne Sicherheitsstrukturen mit maximaler Diskretion.
-  </p>
+  <p>M8 International Protection steht für moderne Sicherheitsstrukturen mit maximaler Diskretion.</p>
 </section>
 
 <section id="services" class="fade">
@@ -423,19 +408,19 @@ footer {
 </footer>
 
 <script>
-// intro fade out
+// intro exit fast zoom
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("intro").classList.add("hide");
 
     setTimeout(() => {
       document.getElementById("intro").style.display = "none";
-    }, 1200);
+    }, 700);
 
-  }, 2200);
+  }, 1800);
 });
 
-// scroll animation
+// scroll fade
 const faders = document.querySelectorAll('.fade');
 
 const observer = new IntersectionObserver(entries => {
@@ -448,12 +433,11 @@ const observer = new IntersectionObserver(entries => {
 
 faders.forEach(el => observer.observe(el));
 
-// progress bar
+// progress
 window.addEventListener('scroll', () => {
   const scrollTop = document.documentElement.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = (scrollTop / scrollHeight) * 100;
-  document.getElementById('progress').style.width = progress + "%";
+  document.getElementById('progress').style.width = (scrollTop / scrollHeight) * 100 + "%";
 });
 </script>
 
