@@ -235,6 +235,7 @@ footer {
 </style>
 </head>
 <body>
+
 <nav>
   <img src="2.png" height="40" alt="M8 International Protection">
   <div class="nav-links">
@@ -337,6 +338,7 @@ footer {
   function zeigeNachricht() {
     document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
   }
+
   function sendeFormular() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
@@ -347,6 +349,7 @@ footer {
     }
     alert('Danke ' + name + '! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
   }
+
   window.addEventListener('scroll', () => {
     if (window.innerWidth > 768) {
       const scrolled = window.scrollY;
@@ -354,6 +357,12 @@ footer {
       const offset = 50 + scrolled * 0.3;
       hero.style.backgroundPositionY = offset + '%';
     }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
   });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
