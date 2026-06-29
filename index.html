@@ -26,6 +26,54 @@ body {
   overflow-x: hidden;
 }
 
+/* INTRO */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+.intro-inner {
+  font-size: 90px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #C9A84C;
+  display: flex;
+  animation: zoomOut 0.6s ease 1.4s forwards;
+}
+
+.intro-inner span {
+  display: inline-block;
+  opacity: 0;
+}
+
+.intro-inner .left {
+  transform: translateX(-120px);
+  animation: slideLeft 1s ease forwards;
+}
+
+.intro-inner .right {
+  transform: translateX(120px);
+  animation: slideRight 1s ease forwards;
+}
+
+@keyframes slideLeft {
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoomOut {
+  to { transform: scale(1.8); opacity: 0; }
+}
+
 /* Scroll Progress */
 #progress {
   position: fixed;
@@ -265,6 +313,14 @@ footer {
 
 <body>
 
+<!-- INTRO -->
+<div id="intro">
+  <div class="intro-inner">
+    <span class="left">M</span>
+    <span class="right">8</span>
+  </div>
+</div>
+
 <div id="progress"></div>
 
 <nav>
@@ -339,10 +395,17 @@ footer {
 </section>
 
 <footer>
-  © 2026 M8 International Protection – Wien
+  ©️ 2026 M8 International Protection – Wien
 </footer>
 
 <script>
+// intro remove
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("intro").style.display = "none";
+  }, 2000);
+});
+
 // scroll animation
 const faders = document.querySelectorAll('.fade');
 
