@@ -1,385 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-<title>M8 International Protection – Premium Security Wien</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>M8 International Protection</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
- background-color: #0A0A0A;
- color: #FFFFFF;
- font-family: 'Inter', sans-serif;
-}
-nav {
- position: fixed;
- top: 0;
- left: 0;
- right: 0;
- width: 100%;
- background-color: rgba(10, 10, 10, 0.90);
- backdrop-filter: blur(20px);
- padding: 20px 60px;
- display: flex;
- justify-content: space-between;
- align-items: center;
- border-bottom: none;
- z-index: 100;
-}
-.nav-links a {
- color: #A9ABB3;
- text-decoration: none;
- margin-left: 40px;
- font-size: 15px;
- transition: color 0.3s ease;
-}
-.nav-links a:hover { color: #C9A84C; }
-.hero {
- position: relative;
- min-height: 100vh;
- overflow: hidden;
- display: flex;
- align-items: center;
- justify-content: center;
- text-align: center;
- border-bottom: none;
-}
-.hero-bg {
- position: absolute;
- top: -20%;
- left: 0;
- width: 100%;
- height: 140%;
- object-fit: cover;
- z-index: 0;
- will-change: transform;
-}
-.hero-overlay {
- position: absolute;
- top: 0; left: 0; right: 0; bottom: 0;
- background: radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%);
- z-index: 1;
-}
-.hero-content {
- position: relative;
- z-index: 2;
- padding: 120px 60px;
-}
-.hero-tag {
- display: inline-block;
- background-color: #0A0A0A;
- border: 1px solid #C9A84C;
- color: #C9A84C;
- padding: 8px 16px;
- border-radius: 100px;
- font-size: 13px;
- margin-bottom: 30px;
- letter-spacing: 2px;
-}
-h1 {
- font-size: 72px;
- font-weight: 700;
- line-height: 1.1;
- margin-bottom: 24px;
- letter-spacing: -2px;
- color: #FFFFFF;
-}
-.accent { color: #C9A84C; }
-.hero-content p {
- font-size: 20px;
- color: #A9ABB3;
- max-width: 560px;
- margin: 0 auto 40px;
- line-height: 1.7;
-}
-.button {
- background-color: #C9A84C;
- color: #0A0A0A;
- padding: 14px 32px;
- border-radius: 18px;
- border: none;
- font-size: 16px;
- font-weight: 600;
- font-family: 'Inter', sans-serif;
- cursor: pointer;
- transition: all 0.4s ease;
- box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
-}
-.button:hover {
- background-color: #E0BC5A;
- transform: scale(1.03);
- box-shadow: 0 0 30px rgba(201, 168, 76, 0.5);
-}
-.about {
- padding: 120px 60px;
- border-bottom: 1px solid rgba(255, 255, 255, 0.06);
- max-width: 700px;
- margin: 0 auto;
- text-align: center;
-}
-h2 {
- font-size: 42px;
- font-weight: 700;
- margin-bottom: 20px;
- letter-spacing: -1px;
- color: #FFFFFF;
-}
-.about p { font-size: 18px; color: #A9ABB3; line-height: 1.8; }
-.services {
- padding: 120px 60px;
- border-bottom: 1px solid rgba(255, 255, 255, 0.06);
- text-align: center;
-}
-.cards {
- display: flex;
- gap: 24px;
- justify-content: center;
- flex-wrap: wrap;
- margin-top: 60px;
-}
-.card {
- background-color: #111111;
- border: 1px solid rgba(255, 255, 255, 0.06);
- padding: 40px 32px;
- border-radius: 24px;
- width: 220px;
- transition: all 0.4s ease;
-}
-.card:hover {
- transform: translateY(-8px);
- border-color: #C9A84C;
- box-shadow: 0 20px 40px rgba(201, 168, 76, 0.15);
-}
-.card-icon { font-size: 36px; margin-bottom: 16px; }
-.card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #FFFFFF; }
-.card-text { font-size: 14px; color: #A9ABB3; line-height: 1.6; }
-.why {
- padding: 120px 60px;
- border-bottom: 1px solid rgba(255, 255, 255, 0.06);
- text-align: center;
-}
-.why-grid {
- display: flex;
- gap: 24px;
- justify-content: center;
- flex-wrap: wrap;
- margin-top: 60px;
-}
-.why-item { max-width: 250px; text-align: center; }
-.why-number { font-size: 48px; font-weight: 700; color: #C9A84C; margin-bottom: 8px; }
-.why-text { font-size: 15px; color: #A9ABB3; line-height: 1.6; }
-.contact {
- padding: 120px 60px;
- border-bottom: 1px solid rgba(255, 255, 255, 0.06);
- text-align: center;
-}
-.form {
- display: flex;
- flex-direction: column;
- max-width: 500px;
- margin: 60px auto 0;
- gap: 16px;
-}
-input, textarea {
- padding: 16px 20px;
- border-radius: 16px;
- border: 1px solid rgba(255, 255, 255, 0.06);
- background-color: #111111;
- color: white;
- font-size: 15px;
- font-family: 'Inter', sans-serif;
- transition: border 0.3s ease;
- outline: none;
-}
-input:focus, textarea:focus { border-color: #C9A84C; }
-textarea { height: 150px; resize: none; }
-.impressum {
- padding: 80px 60px;
- border-bottom: 1px solid rgba(255, 255, 255, 0.06);
- max-width: 700px;
- margin: 0 auto;
-}
-.impressum h2 { font-size: 28px; margin-bottom: 20px; color: #FFFFFF; }
-.impressum p { font-size: 14px; color: #A9ABB3; line-height: 1.8; margin-bottom: 10px; }
-footer {
- padding: 40px 60px;
- display: flex;
- justify-content: space-between;
- align-items: center;
- color: #A9ABB3;
- font-size: 14px;
-}
-.footer-links a {
- color: #A9ABB3;
- text-decoration: none;
- margin-left: 24px;
- transition: color 0.3s ease;
-}
-.footer-links a:hover { color: #C9A84C; }
-.fade-in {
- opacity: 0;
- transform: translateY(40px);
- transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-@media (max-width: 768px) {
- nav {
-   padding: 15px 20px;
-   justify-content: center;
- }
- .nav-links { display: none; }
- .hero-bg { display: none; }
- .hero {
-   background-image: url('mobile.jpg');
-   background-size: cover;
-   background-position: center center;
-   min-height: 100svh;
- }
- .hero-content { padding: 120px 20px 80px; }
- h1 { font-size: 40px; letter-spacing: -1px; }
- .about, .services, .contact, .why, .impressum { padding: 60px 20px; }
- .cards, .why-grid { flex-direction: column; align-items: center; }
- footer { flex-direction: column; gap: 16px; padding: 40px 20px; text-align: center; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#0a0a0a;color:#fff}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgba(10,10,10,.75);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);z-index:10}
+nav img{height:42px}
+.nav-links a{color:#aaa;text-decoration:none;margin-left:30px}
+.hero{position:relative;height:100svh;display:flex;justify-content:center;align-items:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:zoom 20s ease-in-out infinite alternate}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.65),rgba(0,0,0,.35),rgba(0,0,0,.8))}
+.hero-content{position:relative;z-index:2;padding:20px}
+h1{font-size:72px}.accent{color:#c9a84c}
+p{color:#bbb;line-height:1.7}
+.button{margin-top:30px;background:#c9a84c;border:none;padding:15px 30px;border-radius:16px;font-weight:bold;cursor:pointer;transition:.3s}
+.button:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(201,168,76,.5)}
+section{padding:100px 20px;max-width:1100px;margin:auto}
+.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.card{background:#111;padding:30px;border-radius:20px;width:240px;transition:.3s;border:1px solid rgba(255,255,255,.06)}
+.card:hover{transform:translateY(-8px) rotateX(5deg);border-color:#c9a84c}
+footer{text-align:center;padding:40px;color:#888}
+.fade{opacity:0;transform:translateY(40px);transition:.8s}
+.fade.show{opacity:1;transform:none}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+@media(max-width:768px){
+nav{justify-content:center;padding:16px}
+.nav-links{display:none}
+nav img{margin:auto}
+h1{font-size:42px}
 }
 </style>
 </head>
 <body>
-
-<nav>
- <img src="2.png" height="40" alt="M8 International Protection">
- <div class="nav-links">
-   <a href="#about">Über uns</a>
-   <a href="#services">Leistungen</a>
-   <a href="#why">Warum M8</a>
-   <a href="#contact">Kontakt</a>
- </div>
-</nav>
-
+<nav><img src="2.png"><div class="nav-links"><a href="#about">Über uns</a><a href="#services">Leistungen</a></div></nav>
 <section class="hero">
- <img class="hero-bg" src="02.jpg" alt="Wien bei Nacht">
- <div class="hero-overlay"></div>
- <div class="hero-content">
-   <div class="hero-tag">✦ WIEN · ÖSTERREICH</div>
-   <h1>Sicherheit auf<br><span class="accent">höchstem Niveau</span></h1>
-   <p>M8 International Protection steht für diskrete, professionelle Sicherheitslösungen für 5-Sterne Hotels, Casinos und Exklusiv-Events in Wien.</p>
-   <button class="button" onclick="zeigeNachricht()">Jetzt anfragen</button>
- </div>
-</section>
-
-<section class="about fade-in" id="about">
- <h2>Wer wir sind</h2>
- <p>M8 International Protection ist Ihr verlässlicher Partner für Premium-Sicherheit in Wien. Wir verbinden jahrelange Erfahrung mit modernsten Sicherheitsstandards – diskret, professionell und zuverlässig.</p>
-</section>
-
-<section class="services fade-in" id="services">
- <h2>Unsere Leistungen</h2>
- <div class="cards">
-   <div class="card">
-     <div class="card-icon">🏨</div>
-     <div class="card-title">5-Sterne Hotel Security</div>
-     <div class="card-text">Diskreter Schutz für Ihre Gäste und Ihr Eigentum</div>
-   </div>
-   <div class="card">
-     <div class="card-icon">🎰</div>
-     <div class="card-title">Casino Security</div>
-     <div class="card-text">Professionelle Sicherheit für Spielbanken und Glücksspiel</div>
-   </div>
-   <div class="card">
-     <div class="card-icon">🎭</div>
-     <div class="card-title">Event Security</div>
-     <div class="card-text">Zuverlässiger Schutz für Ihre exklusiven Veranstaltungen</div>
-   </div>
-   <div class="card">
-     <div class="card-icon">🔥</div>
-     <div class="card-title">Brandschutzwart</div>
-     <div class="card-text">Zertifizierte Brandschutzbeauftragte für Ihre Sicherheit</div>
-   </div>
- </div>
-</section>
-
-<section class="why fade-in" id="why">
- <h2>Warum M8?</h2>
- <div class="why-grid">
-   <div class="why-item">
-     <div class="why-number">100%</div>
-     <div class="why-text">Diskretion und Professionalität bei jedem Einsatz</div>
-   </div>
-   <div class="why-item">
-     <div class="why-number">24/7</div>
-     <div class="why-text">Rund um die Uhr erreichbar für Ihre Sicherheit</div>
-   </div>
-   <div class="why-item">
-     <div class="why-number">5★</div>
-     <div class="why-text">Ausgerichtet auf höchste Ansprüche und Standards</div>
-   </div>
- </div>
-</section>
-
-<section class="contact fade-in" id="contact">
- <h2>Kontakt</h2>
- <p style="color: #A9ABB3;">Lassen Sie uns Ihr Sicherheitskonzept besprechen.</p>
- <div class="form">
-   <input type="text" id="name" placeholder="Name">
-   <input type="email" id="email" placeholder="E-Mail">
-   <input type="tel" id="tel" placeholder="Telefon">
-   <textarea id="nachricht" placeholder="Ihre Nachricht"></textarea>
-   <button class="button" onclick="sendeFormular()">Anfrage senden</button>
- </div>
-</section>
-
-<section class="impressum fade-in" id="impressum">
- <h2>Impressum</h2>
- <p><strong>M8 International Protection</strong></p>
- <p>Wien, Österreich</p>
- <p>E-Mail: office@m8-protection.at</p>
- <p>Gewerbe: Sicherheitsgewerbe</p>
- <p>Aufsichtsbehörde: Magistrat der Stadt Wien</p>
- <p>Kammerzugehörigkeit: Wirtschaftskammer Wien</p>
-</section>
-
-<footer>
- <div>© 2026 M8 International Protection – Wien</div>
- <div class="footer-links">
-   <a href="#about">Über uns</a>
-   <a href="#services">Leistungen</a>
-   <a href="#contact">Kontakt</a>
-   <a href="#impressum">Impressum</a>
- </div>
-</footer>
-
+<img class="hero-bg" src="02.jpg">
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1>Sicherheit auf<br><span class="accent">höchstem Niveau</span></h1>
+<p>Premium Sicherheitslösungen für Hotels, Casinos und exklusive Events.</p>
+<button class="button" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Jetzt anfragen</button>
+</div></section>
+<section id="about" class="fade"><h2>Wer wir sind</h2><p>M8 International Protection verbindet Diskretion, Erfahrung und moderne Sicherheitsstandards.</p></section>
+<section id="services" class="fade"><h2>Leistungen</h2><div class="cards">
+<div class="card">🏨<h3>Hotels</h3></div>
+<div class="card">🎰<h3>Casinos</h3></div>
+<div class="card">🎭<h3>Events</h3></div>
+<div class="card">🔥<h3>Brandschutz</h3></div>
+</div></section>
+<footer>©2026 M8 International Protection</footer>
 <script>
- function zeigeNachricht() {
-   document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
- }
-
- function sendeFormular() {
-   const name = document.getElementById('name').value;
-   const email = document.getElementById('email').value;
-   const nachricht = document.getElementById('nachricht').value;
-   if (name === '' || email === '' || nachricht === '') {
-     alert('Bitte Name, E-Mail und Nachricht ausfüllen!');
-     return;
-   }
-   alert('Danke ' + name + '! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
- }
-
- window.addEventListener('scroll', () => {
-   if (window.innerWidth > 768) {
-     const scrolled = window.scrollY;
-     const heroBg = document.querySelector('.hero-bg');
-     if (heroBg) {
-       heroBg.style.transform = 'translateY(' + scrolled * 0.4 + 'px)';
-     }
-   }
- });
-
- const observer = new IntersectionObserver((entries) => {
-   entries.forEach(entry => {
-     if (entry.isIntersecting) entry.target.classList.add('visible');
-   });
- });
- document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+window.addEventListener('scroll',()=>{
+const bg=document.querySelector('.hero-bg');
+bg.style.transform='translateY('+(scrollY*0.12)+'px) scale(1.08)';
+});
+const ob=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')}));
+document.querySelectorAll('.fade').forEach(i=>ob.observe(i));
 </script>
-</body>
-</html>
+</body></html>
