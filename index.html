@@ -40,7 +40,7 @@ body {
 
 #intro.hide {
   opacity: 0;
-  transform: scale(1.2);
+  transform: scale(1.25);
   pointer-events: none;
 }
 
@@ -50,7 +50,7 @@ body {
 }
 
 .intro-inner .logo {
-  font-size: clamp(80px, 12vw, 240px);
+  font-size: 240px;
   font-weight: 700;
   letter-spacing: 14px;
   display: flex;
@@ -59,23 +59,24 @@ body {
 }
 
 .intro-inner .logo span {
+  display: inline-block;
   opacity: 0;
   animation: slideIn 1.2s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
 }
 
 .intro-inner .logo span:first-child {
-  transform: translateX(-120px);
+  transform: translateX(-140px);
 }
 
 .intro-inner .logo span:last-child {
-  transform: translateX(120px);
-  animation-delay: 0.1s;
+  transform: translateX(140px);
+  animation-delay: 0.12s;
 }
 
 .intro-inner .sub {
-  margin-top: 20px;
-  font-size: 14px;
-  letter-spacing: 6px;
+  margin-top: 25px;
+  font-size: 18px;
+  letter-spacing: 8px;
   color: #aaa;
   opacity: 0;
   animation: fadeIn 1.2s ease forwards;
@@ -145,13 +146,14 @@ nav img {
   background-size: cover;
   background-position: center;
   transform: scale(1.1);
-  will-change: transform;
+  z-index: 0;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center, rgba(0,0,0,0.3), rgba(0,0,0,0.85));
+  z-index: 1;
 }
 
 .hero-content {
@@ -195,6 +197,7 @@ h1 span {
   border-radius: 14px;
   font-weight: 600;
   cursor: pointer;
+  color: #0a0a0a;
 }
 
 /* SECTIONS */
@@ -225,35 +228,31 @@ p {
   border: 1px solid rgba(255,255,255,0.08);
   padding: 30px;
   border-radius: 18px;
+  color: #ddd;
 }
 
-/* FORM */
-form {
-  margin-top: 20px;
-  display: grid;
-  gap: 12px;
+/* FADE */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
 }
 
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* INPUTS FIX (nur funktional, Optik bleibt dunkel premium) */
 input, textarea {
   width: 100%;
+  margin-top: 10px;
   padding: 14px;
   background: #0f0f0f;
   border: 1px solid rgba(255,255,255,0.1);
   color: white;
   border-radius: 10px;
   outline: none;
-}
-
-/* FADE */
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 0.8s ease;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* FOOTER */
@@ -263,7 +262,7 @@ footer {
   color: #777;
 }
 
-/* MOBILE */
+/* MOBILE FIX (nur kleine Korrektur, kein Designbruch) */
 @media (max-width: 768px) {
 
   h1 {
@@ -278,13 +277,17 @@ footer {
     display: none;
   }
 
+  .hero-bg {
+    background-position: center 25%;
+    transform: scale(1.25);
+  }
+
   section {
     padding: 80px 20px;
   }
 
-  .hero-bg {
-    background-position: center 25%;
-    transform: scale(1.2);
+  .intro-inner .logo {
+    font-size: 110px;
   }
 }
 </style>
@@ -342,7 +345,6 @@ footer {
 
 <section id="contact" class="fade">
   <h2>Kontakt</h2>
-
   <form>
     <input type="text" placeholder="Name">
     <input type="email" placeholder="E-Mail">
@@ -359,7 +361,7 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("intro").classList.add("hide");
     setTimeout(() => document.getElementById("intro").remove(), 800);
-  }, 1600);
+  }, 1800);
 });
 
 const heroBg = document.querySelector('.hero-bg');
