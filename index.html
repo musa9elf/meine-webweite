@@ -295,14 +295,24 @@ footer {
 /* MOBILE FIX */
 @media (max-width: 768px) {
 
-  h1 {
-    font-size: 38px;
+  nav {
+    overflow: hidden;
+    padding: 15px 20px;
   }
 
-  nav {
-    padding: 15px 20px;
-    overflow: hidden; /* 🔥 verhindert das „überbordende“ Element */
+  nav img {
+    height: 36px;
+    transform: translateX(-8px); /* 🔥 leichter links Shift */
   }
+
+  .nav-links {
+    display: none;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
 
   /* LOGO FIX: sauber zentriert */
   nav img {
