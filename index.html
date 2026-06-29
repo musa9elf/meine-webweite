@@ -96,7 +96,7 @@ body {
   }
 }
 
-/* Scroll Progress */
+/* PROGRESS */
 #progress {
   position: fixed;
   top: 0;
@@ -138,7 +138,7 @@ nav img {
   color: #C9A84C;
 }
 
-/* HERO FIX (MOBILE SAFE) */
+/* HERO */
 .hero {
   height: 100vh;
   position: relative;
@@ -148,7 +148,6 @@ nav img {
   text-align: center;
   overflow: hidden;
 
-  /* FIX: kein img tag mehr für background */
   background-image: url("M82.png");
   background-size: cover;
   background-position: center;
@@ -198,6 +197,7 @@ h1 span {
   line-height: 1.6;
 }
 
+/* BUTTON FIX */
 .btn {
   margin-top: 30px;
   background: #C9A84C;
@@ -207,6 +207,8 @@ h1 span {
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
+  color: #0a0a0a;
+  box-shadow: 0 0 25px rgba(201, 168, 76, 0.25);
 }
 
 .btn:hover {
@@ -304,11 +306,25 @@ footer {
   transform: translateY(0);
 }
 
-/* MOBILE */
+/* MOBILE FIX */
 @media (max-width: 768px) {
+
   h1 { font-size: 38px; }
-  nav { padding: 15px 20px; }
-  .nav-links { display: none; }
+
+  nav {
+    padding: 15px 20px;
+  }
+
+  nav img {
+    margin-left: -6px;
+  }
+
+  /* 🔥 MOBILE BACKGROUND FIX (weniger Zoom) */
+  .hero {
+    background-size: contain;
+    background-position: center top;
+    background-color: #0a0a0a;
+  }
 
   section {
     padding: 80px 20px;
@@ -408,7 +424,7 @@ footer {
 </footer>
 
 <script>
-// intro exit fast zoom
+// intro fade out fast zoom
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.getElementById("intro").classList.add("hide");
@@ -420,7 +436,7 @@ window.addEventListener("load", () => {
   }, 1800);
 });
 
-// scroll fade
+// fade sections
 const faders = document.querySelectorAll('.fade');
 
 const observer = new IntersectionObserver(entries => {
@@ -433,11 +449,12 @@ const observer = new IntersectionObserver(entries => {
 
 faders.forEach(el => observer.observe(el));
 
-// progress
+// progress bar
 window.addEventListener('scroll', () => {
   const scrollTop = document.documentElement.scrollTop;
   const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-  document.getElementById('progress').style.width = (scrollTop / scrollHeight) * 100 + "%";
+  document.getElementById('progress').style.width =
+    (scrollTop / scrollHeight) * 100 + "%";
 });
 </script>
 
