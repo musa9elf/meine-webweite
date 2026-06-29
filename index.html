@@ -2,63 +2,368 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>M8 International Protection</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>M8 International Protection – Premium Security Wien</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#0a0a0a;color:#fff}
-nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgba(10,10,10,.75);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);z-index:10}
-nav img{height:42px}
-.nav-links a{color:#aaa;text-decoration:none;margin-left:30px}
-.hero{position:relative;height:100svh;display:flex;justify-content:center;align-items:center;text-align:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:zoom 20s ease-in-out infinite alternate}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.65),rgba(0,0,0,.35),rgba(0,0,0,.8))}
-.hero-content{position:relative;z-index:2;padding:20px}
-h1{font-size:72px}.accent{color:#c9a84c}
-p{color:#bbb;line-height:1.7}
-.button{margin-top:30px;background:#c9a84c;border:none;padding:15px 30px;border-radius:16px;font-weight:bold;cursor:pointer;transition:.3s}
-.button:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(201,168,76,.5)}
-section{padding:100px 20px;max-width:1100px;margin:auto}
-.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
-.card{background:#111;padding:30px;border-radius:20px;width:240px;transition:.3s;border:1px solid rgba(255,255,255,.06)}
-.card:hover{transform:translateY(-8px) rotateX(5deg);border-color:#c9a84c}
-footer{text-align:center;padding:40px;color:#888}
-.fade{opacity:0;transform:translateY(40px);transition:.8s}
-.fade.show{opacity:1;transform:none}
-@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.08)}}
-@media(max-width:768px){
-nav{justify-content:center;padding:16px}
-.nav-links{display:none}
-nav img{margin:auto}
-h1{font-size:42px}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Scroll Progress */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #C9A84C;
+  z-index: 9999;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 18px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,10,0.6);
+  backdrop-filter: blur(18px);
+  z-index: 1000;
+}
+
+nav img {
+  height: 38px;
+}
+
+.nav-links a {
+  margin-left: 30px;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #C9A84C;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero img {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  top: -10%;
+  left: 0;
+  z-index: 0;
+  transform: scale(1.1);
+  filter: brightness(0.55);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.3), rgba(0,0,0,0.85));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  animation: fadeUp 1.2s ease;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #C9A84C;
+  color: #C9A84C;
+  border-radius: 100px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 68px;
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+h1 span {
+  color: #C9A84C;
+}
+
+.hero p {
+  margin-top: 20px;
+  max-width: 600px;
+  margin-inline: auto;
+  color: #aaa;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.btn {
+  margin-top: 30px;
+  background: #C9A84C;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* SECTIONS */
+section {
+  padding: 120px 60px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #aaa;
+  line-height: 1.7;
+}
+
+/* CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 18px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: #C9A84C;
+}
+
+/* WHY */
+.stats {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat h3 {
+  font-size: 42px;
+  color: #C9A84C;
+}
+
+/* CONTACT */
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 10px;
+}
+
+textarea {
+  height: 140px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #777;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  h1 { font-size: 38px; }
+  nav { padding: 15px 20px; }
+  .nav-links { display: none; }
+
+  .hero img {
+    content: url("2.jpg");
+  }
+
+  section {
+    padding: 80px 20px;
+  }
 }
 </style>
 </head>
+
 <body>
-<nav><img src="2.png"><div class="nav-links"><a href="#about">Über uns</a><a href="#services">Leistungen</a></div></nav>
+
+<div id="progress"></div>
+
+<nav>
+  <img src="M82.png" alt="M8 Security">
+  <div class="nav-links">
+    <a href="#about">Über uns</a>
+    <a href="#services">Leistungen</a>
+    <a href="#contact">Kontakt</a>
+  </div>
+</nav>
+
 <section class="hero">
-<img class="hero-bg" src="02.jpg">
-<div class="hero-overlay"></div>
-<div class="hero-content">
-<h1>Sicherheit auf<br><span class="accent">höchstem Niveau</span></h1>
-<p>Premium Sicherheitslösungen für Hotels, Casinos und exklusive Events.</p>
-<button class="button" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Jetzt anfragen</button>
-</div></section>
-<section id="about" class="fade"><h2>Wer wir sind</h2><p>M8 International Protection verbindet Diskretion, Erfahrung und moderne Sicherheitsstandards.</p></section>
-<section id="services" class="fade"><h2>Leistungen</h2><div class="cards">
-<div class="card">🏨<h3>Hotels</h3></div>
-<div class="card">🎰<h3>Casinos</h3></div>
-<div class="card">🎭<h3>Events</h3></div>
-<div class="card">🔥<h3>Brandschutz</h3></div>
-</div></section>
-<footer>©2026 M8 International Protection</footer>
+  <img src="M82.png" alt="Security">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="tag">WIEN · INTERNATIONAL SECURITY</div>
+    <h1>Sicherheit auf <span>Elite Niveau</span></h1>
+    <p>Diskrete, professionelle Sicherheitslösungen für Hotels, Events und exklusive Kunden in Österreich.</p>
+    <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      Kontakt aufnehmen
+    </button>
+  </div>
+</section>
+
+<section id="about" class="fade">
+  <h2>Wer wir sind</h2>
+  <p>
+    M8 International Protection steht für moderne Sicherheitsstrukturen mit maximaler Diskretion.
+    Unser Fokus liegt auf Premium-Kunden, bei denen Vertrauen und Präsenz entscheidend sind.
+  </p>
+</section>
+
+<section id="services" class="fade">
+  <h2>Leistungen</h2>
+
+  <div class="grid">
+    <div class="card">Hotel Security</div>
+    <div class="card">Event Protection</div>
+    <div class="card">Casino Security</div>
+    <div class="card">Personenschutz</div>
+  </div>
+</section>
+
+<section class="fade">
+  <h2>Warum wir</h2>
+
+  <div class="stats">
+    <div class="stat">
+      <h3>24/7</h3>
+      <p>Erreichbarkeit</p>
+    </div>
+    <div class="stat">
+      <h3>100%</h3>
+      <p>Diskretion</p>
+    </div>
+    <div class="stat">
+      <h3>Elite</h3>
+      <p>Standard</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="fade">
+  <h2>Kontakt</h2>
+
+  <input placeholder="Name">
+  <input placeholder="E-Mail">
+  <textarea placeholder="Nachricht"></textarea>
+
+  <button class="btn" style="margin-top:20px;">Senden</button>
+</section>
+
+<footer>
+  © 2026 M8 International Protection – Wien
+</footer>
+
 <script>
-window.addEventListener('scroll',()=>{
-const bg=document.querySelector('.hero-bg');
-bg.style.transform='translateY('+(scrollY*0.12)+'px) scale(1.08)';
+// scroll animation
+const faders = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+    }
+  });
 });
-const ob=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')}));
-document.querySelectorAll('.fade').forEach(i=>ob.observe(i));
+
+faders.forEach(el => observer.observe(el));
+
+// progress bar
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('progress').style.width = progress + "%";
+});
 </script>
-</body></html>
+
+</body>
+</html>
