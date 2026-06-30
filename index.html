@@ -20,7 +20,7 @@ body {
     color: #F5F5F5;
     overflow-x: hidden;
     opacity: 0;
-    transition: opacity 1.5s ease;
+    transition: opacity 1.2s ease;
 }
 
 body.loaded {
@@ -36,7 +36,7 @@ body.loaded {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    animation: fadeOut 1.5s ease forwards;
+    animation: fadeOut 1.4s ease forwards;
     animation-delay: 1.2s;
 }
 
@@ -47,10 +47,7 @@ body.loaded {
 }
 
 @keyframes fadeOut {
-    to {
-        opacity: 0;
-        visibility: hidden;
-    }
+    to { opacity: 0; visibility: hidden; }
 }
 
 /* ================= NAV ================= */
@@ -81,7 +78,6 @@ nav.visible {
 nav h1 {
     font-size: 12px;
     letter-spacing: 4px;
-    font-weight: 500;
     color: #C8A86B;
 }
 
@@ -102,14 +98,14 @@ nav ul li:hover {
     color: #C8A86B;
 }
 
-/* ================= HERO (SCROLL STORY) ================= */
+/* ================= HERO ================= */
 .hero {
-    height: 220vh; /* wichtig für Scroll Story */
+    height: 220vh;
     position: relative;
     background: url('100.jpeg') center/cover no-repeat;
 }
 
-/* Sticky Bild Effekt */
+/* Sticky Bild */
 .hero::before {
     content: "";
     position: sticky;
@@ -117,25 +113,45 @@ nav ul li:hover {
     height: 100vh;
     width: 100%;
     display: block;
-    background: inherit;
-    background-size: cover;
 }
 
-/* Overlay Text */
+/* ================= HERO TEXT ================= */
 .hero-content {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-
-    opacity: 0;
-    transition: 0.6s ease;
     max-width: 900px;
+    opacity: 1;
 }
 
-.hero-content.active {
-    opacity: 1;
+/* Animation Items */
+.hero h2,
+.hero p,
+.hero .btn {
+    opacity: 0;
+    transform: translateX(80px);
+}
+
+/* active state */
+.hero-content.active h2 {
+    animation: slideIn 0.8s ease forwards;
+}
+.hero-content.active p {
+    animation: slideIn 0.8s ease forwards;
+    animation-delay: 0.15s;
+}
+.hero-content.active .btn {
+    animation: slideIn 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .hero h2 {
@@ -178,13 +194,6 @@ section.active {
     transform: translateY(0);
 }
 
-.title {
-    font-size: 14px;
-    letter-spacing: 3px;
-    color: #C8A86B;
-    margin-bottom: 50px;
-}
-
 /* ================= STATS ================= */
 .stats {
     display: flex;
@@ -215,7 +224,6 @@ section.active {
     background: rgba(20,22,26,0.7);
     border: 1px solid #1f1f1f;
     padding: 30px;
-    backdrop-filter: blur(10px);
     transition: 0.4s;
 }
 
@@ -244,7 +252,7 @@ input, textarea {
     nav ul { display: none; }
 
     .hero {
-        height: 200vh;
+        height: 180vh;
     }
 
     .hero h2 {
@@ -274,7 +282,7 @@ input, textarea {
     </ul>
 </nav>
 
-<!-- HERO STORY -->
+<!-- HERO -->
 <div class="hero">
     <div class="hero-content">
         <h2>Protection Without Compromise</h2>
@@ -283,9 +291,8 @@ input, textarea {
     </div>
 </div>
 
+<!-- SECTIONS -->
 <section>
-    <div class="title">OPERATIONAL FOOTPRINT</div>
-
     <div class="stats">
         <div class="stat"><span class="count" data-target="19">0</span>+<small>Years Field Experience</small></div>
         <div class="stat"><span class="count" data-target="920">0</span>+<small>Operations</small></div>
@@ -294,108 +301,68 @@ input, textarea {
 </section>
 
 <section>
-    <div class="title">CORE OPERATIONS</div>
-
     <div class="grid">
-        <div class="card">
-            <h3>Executive Protection</h3>
-            <p>High-risk personal security with discreet operational structure.</p>
-        </div>
-
-        <div class="card">
-            <h3>Risk Intelligence</h3>
-            <p>Threat detection, geopolitical analysis and strategic planning.</p>
-        </div>
-
-        <div class="card">
-            <h3>Travel Security</h3>
-            <p>International escort and route protection in unstable regions.</p>
-        </div>
-
-        <div class="card">
-            <h3>Critical Infrastructure</h3>
-            <p>Protection of sensitive assets and corporate environments.</p>
-        </div>
-    </div>
-</section>
-
-<section>
-    <div class="title">MISSIONS</div>
-
-    <div class="grid">
-        <div class="card">
-            <h3>Executive Relocation Protocol</h3>
-            <p>Multi-country protection deployment under elevated threat conditions.</p>
-        </div>
-
-        <div class="card">
-            <h3>Diplomatic Security Operation</h3>
-            <p>Full perimeter security for high-level international summit.</p>
-        </div>
+        <div class="card"><h3>Executive Protection</h3></div>
+        <div class="card"><h3>Risk Intelligence</h3></div>
+        <div class="card"><h3>Travel Security</h3></div>
+        <div class="card"><h3>Critical Infrastructure</h3></div>
     </div>
 </section>
 
 <section class="contact">
-    <div class="title">SECURE CHANNEL</div>
-
     <input type="text" placeholder="Name">
     <input type="email" placeholder="Email">
-    <textarea rows="5" placeholder="Encrypted Message"></textarea>
-
-    <button class="btn" style="margin-top:20px;">Transmit Secure Request</button>
+    <textarea rows="5" placeholder="Message"></textarea>
 </section>
 
 <script>
-// Loader
+// loader
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
+
+    setTimeout(() => {
+        document.querySelector(".hero-content").classList.add("active");
+    }, 900);
 });
 
-// HERO TEXT CONTROL + NAV
-const heroText = document.querySelector(".hero-content");
+// nav + scroll logic
+const hero = document.querySelector(".hero-content");
 
 window.addEventListener("scroll", () => {
     const nav = document.querySelector("nav");
     const scrollY = window.scrollY;
-    const height = window.innerHeight;
+    const h = window.innerHeight;
 
-    if (scrollY > height * 0.4 && scrollY < height * 1.4) {
-        heroText.classList.add("active");
-    } else {
-        heroText.classList.remove("active");
-    }
-
-    if (scrollY > height * 0.6) {
+    if (scrollY > h * 0.5) {
         nav.classList.add("visible");
     } else {
         nav.classList.remove("visible");
     }
 });
 
-// SECTION REVEAL
+// sections reveal
 const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
     sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
+        if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
             sec.classList.add("active");
         }
     });
 });
 
-// COUNTERS
+// COUNTER ANIMATION
 const counters = document.querySelectorAll(".count");
 
 counters.forEach(counter => {
     const update = () => {
         const target = +counter.getAttribute("data-target");
         const current = +counter.innerText;
-        const step = target / 80;
+        const step = target / 60;
 
         if (current < target) {
             counter.innerText = Math.ceil(current + step);
-            setTimeout(update, 18);
+            setTimeout(update, 20);
         } else {
             counter.innerText = target;
         }
