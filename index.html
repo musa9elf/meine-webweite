@@ -336,7 +336,7 @@ window.addEventListener("load", () => {
 
 // COUNTERS
 const counters = document.querySelectorAll(".count");
-    
+
 counters.forEach(counter => {
     const update = () => {
         const target = +counter.getAttribute("data-target");
@@ -353,7 +353,9 @@ counters.forEach(counter => {
     update();
 });
 
-    window.addEventListener("scroll", () => {
+
+// PARALLAX (NEU)
+window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
 
     const bg = document.querySelector(".hero-bg");
