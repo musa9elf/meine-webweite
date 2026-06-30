@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M8 International Protection</title>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
@@ -19,12 +22,6 @@ body {
     background: #0E0F11;
     color: #F5F5F5;
     overflow-x: hidden;
-    opacity: 0;
-    transition: opacity 1.2s ease;
-}
-
-body.loaded {
-    opacity: 1;
 }
 
 /* NAV */
@@ -32,17 +29,18 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 20px 60px;
+    height: 70px;
+    padding: 0 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: rgba(10,10,10,0.4);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
     z-index: 1000;
 }
 
 nav h1 {
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 3px;
     font-weight: 500;
 }
@@ -56,7 +54,6 @@ nav ul {
 nav ul li {
     font-size: 12px;
     color: #A7AEB5;
-    cursor: pointer;
 }
 
 /* HERO */
@@ -64,6 +61,9 @@ nav ul li {
     height: 100vh;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-bg {
@@ -72,28 +72,27 @@ nav ul li {
     background: url('hero.jpg') center/cover no-repeat;
     transform: scale(1.1);
 }
-.hero::after {
-    content: "";
+
+.hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.3), rgba(0,0,0,0.85));
+    background: radial-gradient(circle at center, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
 }
 
 .hero-content {
     position: relative;
+    z-index: 2;
     text-align: center;
     max-width: 900px;
-    animation: fadeUp 1.5s ease;
 }
 
 .hero h2 {
     font-size: 54px;
-    letter-spacing: 1px;
     font-weight: 400;
 }
 
 .hero p {
-    margin-top: 20px;
+    margin-top: 15px;
     color: #A7AEB5;
     font-size: 14px;
 }
@@ -115,14 +114,13 @@ nav ul li {
 
 /* SECTIONS */
 section {
-    padding: 110px 60px;
+    padding: 100px 60px;
 }
 
 .section-title {
-    font-size: 22px;
-    letter-spacing: 2px;
+    font-size: 20px;
     color: #C8A86B;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 /* STATS */
@@ -137,13 +135,6 @@ section {
     color: #C8A86B;
 }
 
-.stat small {
-    display: block;
-    font-size: 12px;
-    color: #A7AEB5;
-    margin-top: 6px;
-}
-
 /* GRID */
 .grid {
     display: grid;
@@ -151,36 +142,19 @@ section {
     gap: 30px;
 }
 
-.card {
+.card, .case {
     background: #15181C;
-    padding: 30px;
+    padding: 25px;
     border-left: 2px solid #C8A86B;
-    transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* CASE STUDIES */
-.case {
-    background: #15181C;
-    padding: 30px;
-    border: 1px solid #222;
-}
-
-.case h3 {
-    color: #F5F5F5;
-    margin-bottom: 10px;
-}
-
-.case p {
+.card p, .case p {
     color: #A7AEB5;
     font-size: 13px;
-    line-height: 1.6;
+    margin-top: 10px;
 }
 
-/* TESTIMONIALS */
+/* TESTIMONIAL */
 .testimonial {
     border-left: 2px solid #C8A86B;
     padding-left: 20px;
@@ -192,7 +166,6 @@ section {
 .contact {
     background: #0B0C0E;
     padding: 60px;
-    border-top: 1px solid #1D232A;
 }
 
 input, textarea {
@@ -204,34 +177,12 @@ input, textarea {
     color: white;
 }
 
-/* ANIMATIONS */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(25px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 /* MOBILE */
 @media (max-width: 768px) {
-
-    nav {
-        padding: 15px 20px;
-    }
-
-    nav ul {
-        display: none;
-    }
-
-    .hero h2 {
-        font-size: 30px;
-    }
-
-    section {
-        padding: 70px 20px;
-    }
-
-    .stats {
-        flex-direction: column;
-    }
+    nav { padding: 0 20px; }
+    .hero h2 { font-size: 32px; }
+    section { padding: 60px 20px; }
+    .stats { flex-direction: column; }
 }
 </style>
 </head>
@@ -239,7 +190,7 @@ input, textarea {
 <body>
 
 <nav>
-    <h1>M8 INTERNATIONAL PROTECTION</h1>
+    <h1>M8 INTERNATIONAL</h1>
     <ul>
         <li>Services</li>
         <li>Missions</li>
@@ -249,6 +200,7 @@ input, textarea {
 
 <div class="hero">
     <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
 
     <div class="hero-content">
         <h2>Protection Without Compromise</h2>
@@ -258,111 +210,103 @@ input, textarea {
 </div>
 
 <section>
-    <h2 class="section-title">OPERATIONAL EXPERIENCE</h2>
-
+    <h2 class="section-title">EXPERIENCE</h2>
     <div class="stats">
-        <div class="stat"><span class="count" data-target="15">0</span>+<small>Years Field Experience</small></div>
-        <div class="stat"><span class="count" data-target="500">0</span>+<small>Protected Operations</small></div>
-        <div class="stat"><span class="count" data-target="30">0</span>+<small>Countries Active</small></div>
+        <div class="stat"><span class="count" data-target="15">0</span>+ Years</div>
+        <div class="stat"><span class="count" data-target="500">0</span>+ Operations</div>
+        <div class="stat"><span class="count" data-target="30">0</span>+ Countries</div>
     </div>
 </section>
 
 <section>
-    <h2 class="section-title">CORE SERVICES</h2>
-
+    <h2 class="section-title">SERVICES</h2>
     <div class="grid">
         <div class="card">
             <h3>Executive Protection</h3>
-            <p>Discreet personal security for high-risk individuals and global executives.</p>
+            <p>High-level personal security worldwide.</p>
         </div>
-
         <div class="card">
-            <h3>Intelligence & Risk</h3>
-            <p>Threat analysis, monitoring and strategic advisory for sensitive environments.</p>
+            <h3>Risk Intelligence</h3>
+            <p>Analysis and threat monitoring.</p>
         </div>
-
         <div class="card">
             <h3>Travel Security</h3>
-            <p>International movement protection in unstable or high-risk regions.</p>
-        </div>
-
-        <div class="card">
-            <h3>Event Protection</h3>
-            <p>Security planning and execution for private and corporate events.</p>
+            <p>Secure international operations.</p>
         </div>
     </div>
 </section>
 
 <section>
-    <h2 class="section-title">MISSIONS</h2>
-
-    <div class="grid">
-        <div class="case">
-            <h3>Corporate Executive Escort</h3>
-            <p>Multi-country protection detail for CEO travel under elevated threat profile.</p>
-        </div>
-
-        <div class="case">
-            <h3>Diplomatic Event Security</h3>
-            <p>Coordination of secure perimeter and personnel screening for diplomatic summit.</p>
-        </div>
+    <h2 class="section-title">MISSION</h2>
+    <div class="case">
+        <h3>Corporate Escort</h3>
+        <p>Multi-country executive protection detail.</p>
     </div>
 </section>
 
 <section>
-    <h2 class="section-title">CLIENT FEEDBACK</h2>
-
+    <h2 class="section-title">FEEDBACK</h2>
     <div class="testimonial">
-        “Absolute discretion, precise execution. They operate without attention — exactly as required.”
+        “Absolute discretion and precision execution.”
     </div>
 </section>
 
 <section class="contact">
-    <h2 class="section-title">SECURE CONTACT</h2>
-
+    <h2 class="section-title">CONTACT</h2>
     <input type="text" placeholder="Name">
     <input type="email" placeholder="Email">
     <textarea rows="5" placeholder="Message"></textarea>
-
-    <button class="btn" style="margin-top:20px;">Send Encrypted Request</button>
+    <button class="btn" style="margin-top:20px;">Send</button>
 </section>
 
 <script>
-// PAGE LOAD ANIMATION
-window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
+gsap.registerPlugin(ScrollTrigger);
+
+/* HERO PARALLAX */
+gsap.to(".hero-bg", {
+    y: 120,
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+    }
 });
 
-// COUNTERS
+gsap.to(".hero-content", {
+    y: 60,
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+    }
+});
+
+/* COUNTERS */
 const counters = document.querySelectorAll(".count");
 
-counters.forEach(counter => {
-    const update = () => {
-        const target = +counter.getAttribute("data-target");
-        const current = +counter.innerText;
-        const increment = target / 70;
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = +el.dataset.target;
+            let count = 0;
 
-        if (current < target) {
-            counter.innerText = Math.ceil(current + increment);
-            setTimeout(update, 25);
-        } else {
-            counter.innerText = target;
+            const interval = setInterval(() => {
+                count++;
+                el.textContent = count;
+                if (count >= target) clearInterval(interval);
+            }, 20);
+
+            observer.unobserve(el);
         }
-    };
-    update();
+    });
 });
 
-
-// PARALLAX (NEU)
-window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-
-    const bg = document.querySelector(".hero-bg");
-    const content = document.querySelector(".hero-content");
-
-    bg.style.transform = `translateY(${scrollY * 0.3}px) scale(1.1)`;
-    content.style.transform = `translateY(${scrollY * 0.15}px)`;
-});
+counters.forEach(c => observer.observe(c));
 </script>
 
 </body>
