@@ -56,11 +56,10 @@ nav ul li {
     color: #A7AEB5;
 }
 
-/* HAMBURGER ICON */
 .menu-toggle {
     display: none;
     font-size: 24px;
-    color: white;
+    color: #F5F5F5;
     cursor: pointer;
 }
 
@@ -94,9 +93,41 @@ nav ul li {
     max-width: 900px;
 }
 
+.hero h2 {
+    font-size: 54px;
+    font-weight: 400;
+}
+
+.hero p {
+    margin-top: 15px;
+    color: #A7AEB5;
+    font-size: 14px;
+}
+
+.btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    border: 1px solid #C8A86B;
+    background: transparent;
+    color: #C8A86B;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #C8A86B;
+    color: #0E0F11;
+}
+
 /* SECTIONS */
 section {
     padding: 100px 60px;
+}
+
+.section-title {
+    font-size: 20px;
+    color: #C8A86B;
+    margin-bottom: 40px;
 }
 
 /* STATS */
@@ -106,6 +137,11 @@ section {
     flex-wrap: wrap;
 }
 
+.stat {
+    font-size: 40px;
+    color: #C8A86B;
+}
+
 /* GRID */
 .grid {
     display: grid;
@@ -113,28 +149,64 @@ section {
     gap: 30px;
 }
 
+.card, .case {
+    background: #15181C;
+    padding: 25px;
+    border-left: 2px solid #C8A86B;
+}
+
+.card p, .case p {
+    color: #A7AEB5;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+    border-left: 2px solid #C8A86B;
+    padding-left: 20px;
+    color: #A7AEB5;
+    font-style: italic;
+}
+
+/* CONTACT */
+.contact {
+    background: #0B0C0E;
+    padding: 60px;
+}
+
+input, textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    background: #15181C;
+    border: 1px solid #222;
+    color: white;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
 
     nav { padding: 0 20px; }
 
+    .menu-toggle {
+        display: block;
+    }
+
     nav ul {
         position: absolute;
         top: 70px;
-        right: 0;
-        background: rgba(0,0,0,0.9);
+        right: 20px;
+        background: rgba(10,10,10,0.95);
         flex-direction: column;
         width: 200px;
-        padding: 20px;
+        padding: 15px;
         display: none;
+        border: 1px solid #222;
     }
 
     nav ul.active {
         display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
     }
 
     .hero h2 { font-size: 32px; }
@@ -151,7 +223,6 @@ section {
 <nav>
     <h1>M8 INTERNATIONAL PROTECTION</h1>
 
-    <!-- HAMBURGER -->
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
     <ul id="menu">
@@ -225,12 +296,10 @@ section {
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* MENU TOGGLE */
 function toggleMenu() {
     document.getElementById("menu").classList.toggle("active");
 }
 
-/* HERO PARALLAX */
 gsap.to(".hero-bg", {
     y: 120,
     ease: "none",
@@ -253,7 +322,6 @@ gsap.to(".hero-content", {
     }
 });
 
-/* COUNTERS */
 const counters = document.querySelectorAll(".count");
 
 const observer = new IntersectionObserver(entries => {
