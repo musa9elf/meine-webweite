@@ -3,446 +3,378 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M8 International Protection</title>
 
-<title>M8 International Protection – VIENNA</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
-  color: #fff;
-  overflow-x: hidden;
+    background: #0A0B0D;
+    color: #F5F5F5;
+    overflow-x: hidden;
+    opacity: 0;
+    transition: opacity 1.5s ease;
 }
 
-/* INTRO */
-#intro {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #111 0%, #0a0a0a 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-  transition: opacity 0.7s ease, transform 0.7s ease;
+body.loaded {
+    opacity: 1;
 }
 
-#intro.hide {
-  opacity: 0;
-  transform: scale(1.25);
-  pointer-events: none;
+/* ================= LOADER ================= */
+.loader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeOut 1.5s ease forwards;
+    animation-delay: 1.2s;
 }
 
-.intro-inner {
-  text-align: center;
-  color: #C9A84C;
+.loader h1 {
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: #C8A86B;
 }
 
-.intro-inner .logo {
-  font-size: 240px;
-  font-weight: 700;
-  letter-spacing: 14px;
-  display: flex;
-  justify-content: center;
-  gap: 0px;
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
-.intro-inner .logo span {
-  display: inline-block;
-  opacity: 0;
-  animation: slideIn 1.2s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
-}
-
-.intro-inner .logo span:first-child {
-  transform: translateX(-140px);
-}
-
-.intro-inner .logo span:last-child {
-  transform: translateX(140px);
-  animation-delay: 0.12s;
-}
-
-.intro-inner .sub {
-  margin-top: 25px;
-  font-size: 18px;
-  letter-spacing: 8px;
-  color: #aaa;
-  opacity: 0;
-  animation: fadeIn 1.2s ease forwards;
-  animation-delay: 0.8s;
-}
-
-@keyframes slideIn {
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* PROGRESS */
-#progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: #C9A84C;
-  z-index: 9999;
-}
-
-/* NAV */
+/* ================= NAV ================= */
 nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 18px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(10,10,10,0.6);
-  backdrop-filter: blur(18px);
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.35);
+    backdrop-filter: blur(16px);
+    z-index: 1000;
+    transition: 0.4s;
 }
 
-nav img {
-  height: 38px;
+nav.scrolled {
+    background: rgba(10,10,10,0.75);
 }
 
-.nav-links a {
-  margin-left: 30px;
-  color: #aaa;
-  text-decoration: none;
-  font-size: 14px;
+nav h1 {
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    color: #C8A86B;
 }
 
-/* HERO */
+nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+nav ul li {
+    font-size: 12px;
+    color: #A7AEB5;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav ul li:hover {
+    color: #C8A86B;
+}
+
+/* ================= HERO ================= */
 .hero {
-  height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
+    height: 100vh;
+    background: url('hero.jpg') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(0);
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url("M82.png");
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.3);
-  z-index: 0;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(0,0,0,0.3), rgba(0,0,0,0.85));
-  z-index: 1;
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.2), rgba(0,0,0,0.92));
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 20px;
+    position: relative;
+    text-align: center;
+    max-width: 900px;
+    animation: fadeUp 1.6s ease;
 }
 
-.tag {
-  display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid #C9A84C;
-  color: #C9A84C;
-  border-radius: 100px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-h1 {
-  font-size: 68px;
-  line-height: 1.05;
-}
-
-h1 span {
-  color: #C9A84C;
+.hero h2 {
+    font-size: 62px;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
 .hero p {
-  margin-top: 20px;
-  max-width: 600px;
-  margin-inline: auto;
-  color: #aaa;
+    margin-top: 18px;
+    color: #A7AEB5;
+    font-size: 14px;
 }
 
 .btn {
-  margin-top: 30px;
-  background: #C9A84C;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  color: #0a0a0a;
+    margin-top: 30px;
+    padding: 12px 30px;
+    border: 1px solid #C8A86B;
+    background: transparent;
+    color: #C8A86B;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* SECTIONS */
+.btn:hover {
+    background: #C8A86B;
+    color: #0A0B0D;
+}
+
+/* ================= SECTIONS ================= */
 section {
-  padding: 120px 60px;
-  max-width: 1100px;
-  margin: auto;
+    padding: 120px 60px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
 }
 
-h2 {
-  font-size: 40px;
+section.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-p {
-  color: #aaa;
-  line-height: 1.7;
+.title {
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #C8A86B;
+    margin-bottom: 50px;
 }
 
-/* GRID */
+/* ================= STATS ================= */
+.stats {
+    display: flex;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    font-size: 44px;
+    color: #C8A86B;
+}
+
+.stat small {
+    display: block;
+    font-size: 12px;
+    color: #A7AEB5;
+    margin-top: 6px;
+}
+
+/* ================= CARDS ================= */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
 }
 
 .card {
-  background: #0f0f0f;
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 30px;
-  border-radius: 18px;
-  color: #ddd;
+    background: rgba(20,22,26,0.7);
+    border: 1px solid #1f1f1f;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: 0.4s;
 }
 
-/* FADE */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s;
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #C8A86B;
 }
 
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
+/* ================= CONTACT ================= */
+.contact {
+    background: #0A0B0D;
+    border-top: 1px solid #1d1d1d;
 }
 
-/* INPUTS FIX (nur funktional, Optik bleibt dunkel premium) */
 input, textarea {
-  width: 100%;
-  margin-top: 10px;
-  padding: 14px;
-  background: #0f0f0f;
-  border: 1px solid rgba(255,255,255,0.1);
-  color: white;
-  border-radius: 10px;
-  outline: none;
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    background: rgba(20,22,26,0.6);
+    border: 1px solid #222;
+    color: white;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #777;
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* MOBILE FIX (nur kleine Korrektur, kein Designbruch) */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
-  nav img {
-    height: 35px;
-  }
+    nav ul { display: none; }
 
-  h1 {
-    font-size: 38px;
-  }
+    .hero h2 {
+        font-size: 34px;
+    }
 
-  nav {
-    padding: 5px 10px;
-  }
+    section {
+        padding: 80px 20px;
+    }
 
-  .nav-links {
-    display: none;
-  }
-
-  .hero-bg {
-    background-position: center 25%;
-    transform: scale(1.25);
-  }
-
-  section {
-    padding: 80px 20px;
-  }
-
-  .intro-inner .logo {
-    font-size: 110px;
-  }
+    .stats {
+        flex-direction: column;
+        gap: 30px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div id="intro">
-  <div class="intro-inner">
-    <div class="logo">
-      <span>M</span>
-      <span>8</span>
-    </div>
-    <div class="sub">INTERNATIONAL PROTECTION</div>
-  </div>
+<div class="loader">
+    <h1>M8 // INITIALIZING</h1>
 </div>
 
-<div id="progress"></div>
-
 <nav>
-  <img src="22.png" alt="M8 Security">
-  <div class="nav-links">
-    <a href="#about">Über uns</a>
-    <a href="#services">Leistungen</a>
-    <a href="#contact">Kontakt</a>
-  </div>
+    <h1>M8 INTERNATIONAL PROTECTION</h1>
+    <ul>
+        <li>Services</li>
+        <li>Missions</li>
+        <li>Contact</li>
+    </ul>
 </nav>
 
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <div class="tag">WIEN · INTERNATIONAL PROTECTION</div>
-    <h1>Sicherheit auf <span>Elite Niveau</span></h1>
-    <p>Diskrete, professionelle Sicherheitslösungen für Hotels, Events und exklusive Kunden in Österreich.</p>
-    <button class="btn">Kontakt aufnehmen</button>
-  </div>
-</section>
-
-<section id="about" class="fade">
-  <h2>Wer wir sind</h2>
-  <p>M8 International Protection steht für moderne Sicherheitsstrukturen mit maximaler Diskretion.</p>
-</section>
-
-<section id="services" class="fade">
-  <h2>Leistungen</h2>
-  <div class="grid">
-    <div class="card">Hotel</div>
-    <div class="card">Events</div>
-    <div class="card">Casino</div>
-    <div class="card">Personenschutz</div>
-  </div>
-</section>
-
-<section id="why" class="fade">
-  <h2>Warum M8?</h2>
-  <div class="grid" style="margin-top: 60px; text-align: center;">
-    <div class="card">
-      <div style="font-size: 48px; font-weight: 700; color: #C9A84C;">
-        <span class="counter" data-target="100">0</span>%
-      </div>
-      <p style="margin-top: 10px;">Diskretion bei jedem Einsatz</p>
+<div class="hero" id="hero">
+    <div class="hero-content">
+        <h2>Protection Without Compromise</h2>
+        <p>Executive Protection • Intelligence • Global Security Operations</p>
+        <button class="btn">Request Secure Access</button>
     </div>
-    <div class="card">
-      <div style="font-size: 48px; font-weight: 700; color: #C9A84C;">
-        <span class="counter" data-target="24">0</span>/7
-      </div>
-      <p style="margin-top: 10px;">Rund um die Uhr erreichbar</p>
+</div>
+
+<section>
+    <div class="title">OPERATIONAL FOOTPRINT</div>
+
+    <div class="stats">
+        <div class="stat"><span class="count" data-target="19">0</span>+<small>Years Field Experience</small></div>
+        <div class="stat"><span class="count" data-target="920">0</span>+<small>Operations</small></div>
+        <div class="stat"><span class="count" data-target="35">0</span>+<small>Countries</small></div>
     </div>
-    <div class="card">
-      <div style="font-size: 48px; font-weight: 700; color: #C9A84C;">
-        <span class="counter" data-target="5">0</span>★
-      </div>
-      <p style="margin-top: 10px;">Höchste Ansprüche</p>
-    </div>
-  </div>
 </section>
-  
-<section id="contact" class="fade">
-  <h2>Kontakt</h2>
-  <form>
+
+<section>
+    <div class="title">CORE OPERATIONS</div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Executive Protection</h3>
+            <p>High-risk personal security with discreet operational structure.</p>
+        </div>
+
+        <div class="card">
+            <h3>Risk Intelligence</h3>
+            <p>Threat detection, geopolitical analysis and strategic planning.</p>
+        </div>
+
+        <div class="card">
+            <h3>Travel Security</h3>
+            <p>International escort and route protection in unstable regions.</p>
+        </div>
+
+        <div class="card">
+            <h3>Critical Infrastructure</h3>
+            <p>Protection of sensitive assets and corporate environments.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="title">MISSIONS</div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Executive Relocation Protocol</h3>
+            <p>Multi-country protection deployment under elevated threat conditions.</p>
+        </div>
+
+        <div class="card">
+            <h3>Diplomatic Security Operation</h3>
+            <p>Full perimeter security for high-level international summit.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact">
+    <div class="title">SECURE CHANNEL</div>
+
     <input type="text" placeholder="Name">
-    <input type="email" placeholder="E-Mail">
-    <textarea placeholder="Nachricht"></textarea>
-  </form>
-</section>
+    <input type="email" placeholder="Email">
+    <textarea rows="5" placeholder="Encrypted Message"></textarea>
 
-<footer>
-  ©️ 2026 M8 International Protection – Wien
-</footer>
+    <button class="btn" style="margin-top:20px;">Transmit Secure Request</button>
+</section>
 
 <script>
+// LOADER END
 window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("intro").classList.add("hide");
-    setTimeout(() => document.getElementById("intro").remove(), 800);
-  }, 1800);
+    document.body.classList.add("loaded");
 });
 
-const heroBg = document.querySelector('.hero-bg');
-const faders = document.querySelectorAll('.fade');
-const progressBar = document.getElementById('progress');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('show');
-  });
-}, { threshold: 0.2 });
-
-faders.forEach(el => observer.observe(el));
-
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-  const progress = scrollHeight > 0
-    ? (scrollTop / scrollHeight) * 100
-    : 0;
-
-  progressBar.style.width = progress + "%";
-
-  if (heroBg) {
-    heroBg.style.transform = `translateY(${scrollTop * 0.15}px) scale(1.1)`;
-  }
+// NAV SCROLL EFFECT
+window.addEventListener("scroll", () => {
+    const nav = document.querySelector("nav");
+    nav.classList.toggle("scrolled", window.scrollY > 50);
 });
-// Zähler Animation
-function animateCounter(element, target, duration) {
-  let start = 0;
-  const increment = target / (duration / 16);
-  const timer = setInterval(() => {
-    start += increment;
-    if (start >= target) {
-      start = target;
-      clearInterval(timer);
-    }
-    element.textContent = Math.floor(start);
-  }, 16);
-}
 
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.getAttribute('data-target'));
-      animateCounter(el, target, 2000);
-      counterObserver.unobserve(el);
-    }
-  });
-}, { threshold: 0.5 });
+// SECTION REVEAL
+const sections = document.querySelectorAll("section");
 
-document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            sec.classList.add("active");
+        }
+    });
+});
+
+// COUNTERS
+const counters = document.querySelectorAll(".count");
+
+counters.forEach(counter => {
+    const update = () => {
+        const target = +counter.getAttribute("data-target");
+        const current = +counter.innerText;
+        const step = target / 80;
+
+        if (current < target) {
+            counter.innerText = Math.ceil(current + step);
+            setTimeout(update, 18);
+        } else {
+            counter.innerText = target;
+        }
+    };
+    update();
+});
 </script>
 
 </body>
