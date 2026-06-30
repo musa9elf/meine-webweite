@@ -325,7 +325,7 @@ footer {
 
   <div class="hero-content">
     <div class="tag">WIEN · INTERNATIONAL PROTECTION</div>
-    <h1 id="typewriter"></h1>
+    <h1>Sicherheit auf <span>Elite Niveau</span></h1>
     <p>Diskrete, professionelle Sicherheitslösungen für Hotels, Events und exklusive Kunden in Österreich.</p>
     <button class="btn">Kontakt aufnehmen</button>
   </div>
@@ -443,19 +443,6 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
-const text = "Sicherheit auf Elite Niveau";
-const typeEl = document.getElementById('typewriter');
-let i = 0;
-
-function type() {
-  if (i < text.length) {
-    typeEl.innerHTML = text.substring(0, i + 1).replace('Elite Niveau', '<span>Elite Niveau</span>');
-    i++;
-    setTimeout(type, 80);
-  }
-}
-
-setTimeout(type, 2000);
 </script>
 
 </body>
