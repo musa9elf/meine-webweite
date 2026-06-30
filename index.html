@@ -61,13 +61,17 @@ nav ul li {
 
 /* HERO */
 .hero {
+    .hero {
     height: 100vh;
-    background: url('100.jpeg') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
-    margin-top: 59px;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('hero.jpg') center/cover no-repeat;
+    transform: scale(1.1);
 }
 .hero::after {
     content: "";
@@ -245,6 +249,8 @@ input, textarea {
 </nav>
 
 <div class="hero">
+    <div class="hero-bg"></div>
+
     <div class="hero-content">
         <h2>Protection Without Compromise</h2>
         <p>Executive Protection • Intelligence • Global Risk Management</p>
@@ -330,6 +336,15 @@ window.addEventListener("load", () => {
 
 // COUNTERS
 const counters = document.querySelectorAll(".count");
+    window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+
+    const bg = document.querySelector(".hero-bg");
+    const content = document.querySelector(".hero-content");
+
+    bg.style.transform = `translateY(${scrollY * 0.3}px) scale(1.1)`;
+    content.style.transform = `translateY(${scrollY * 0.15}px)`;
+});
 
 counters.forEach(counter => {
     const update = () => {
