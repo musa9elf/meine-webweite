@@ -20,14 +20,14 @@ body {
     color: #F5F5F5;
     overflow-x: hidden;
     opacity: 0;
-    transition: opacity 1.2s ease;
+    transition: opacity 1s ease;
 }
 
 body.loaded {
     opacity: 1;
 }
 
-/* ================= LOADER ================= */
+/* LOADER */
 .loader {
     position: fixed;
     inset: 0;
@@ -36,8 +36,6 @@ body.loaded {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    animation: fadeOut 1.4s ease forwards;
-    animation-delay: 1.2s;
 }
 
 .loader h1 {
@@ -46,11 +44,7 @@ body.loaded {
     color: #C8A86B;
 }
 
-@keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-}
-
-/* ================= NAV ================= */
+/* NAV */
 nav {
     position: fixed;
     top: 0;
@@ -66,7 +60,7 @@ nav {
     opacity: 0;
     transform: translateY(-20px);
     pointer-events: none;
-    transition: 0.5s ease;
+    transition: 0.4s ease;
 }
 
 nav.visible {
@@ -91,31 +85,15 @@ nav ul li {
     font-size: 12px;
     color: #A7AEB5;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-nav ul li:hover {
-    color: #C8A86B;
-}
-
-/* ================= HERO ================= */
+/* HERO */
 .hero {
-    height: 220vh;
-    position: relative;
+    height: 200vh;
     background: url('100.jpeg') center/cover no-repeat;
+    position: relative;
 }
 
-/* Sticky Bild */
-.hero::before {
-    content: "";
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    width: 100%;
-    display: block;
-}
-
-/* ================= HERO TEXT ================= */
 .hero-content {
     position: fixed;
     top: 50%;
@@ -123,28 +101,25 @@ nav ul li:hover {
     transform: translate(-50%, -50%);
     text-align: center;
     max-width: 900px;
-    opacity: 1;
 }
 
-/* Animation Items */
 .hero h2,
 .hero p,
 .hero .btn {
     opacity: 0;
-    transform: translateX(80px);
+    transform: translateX(60px);
 }
 
-/* active state */
 .hero-content.active h2 {
-    animation: slideIn 0.8s ease forwards;
+    animation: slideIn 0.7s forwards;
 }
 .hero-content.active p {
-    animation: slideIn 0.8s ease forwards;
-    animation-delay: 0.15s;
+    animation: slideIn 0.7s forwards;
+    animation-delay: 0.1s;
 }
 .hero-content.active .btn {
-    animation: slideIn 0.8s ease forwards;
-    animation-delay: 0.3s;
+    animation: slideIn 0.7s forwards;
+    animation-delay: 0.2s;
 }
 
 @keyframes slideIn {
@@ -157,36 +132,28 @@ nav ul li:hover {
 .hero h2 {
     font-size: 62px;
     font-weight: 400;
-    letter-spacing: 1px;
 }
 
 .hero p {
-    margin-top: 18px;
+    margin-top: 15px;
     color: #A7AEB5;
-    font-size: 14px;
 }
 
 .btn {
-    margin-top: 30px;
-    padding: 12px 30px;
+    margin-top: 25px;
+    padding: 12px 28px;
     border: 1px solid #C8A86B;
     background: transparent;
     color: #C8A86B;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.btn:hover {
-    background: #C8A86B;
-    color: #0A0B0D;
-}
-
-/* ================= SECTIONS ================= */
+/* SECTIONS */
 section {
     padding: 120px 60px;
     opacity: 0;
-    transform: translateY(40px);
-    transition: 1s ease;
+    transform: translateY(30px);
+    transition: 0.8s ease;
 }
 
 section.active {
@@ -194,10 +161,10 @@ section.active {
     transform: translateY(0);
 }
 
-/* ================= STATS ================= */
+/* STATS */
 .stats {
     display: flex;
-    gap: 70px;
+    gap: 60px;
     flex-wrap: wrap;
 }
 
@@ -210,31 +177,23 @@ section.active {
     display: block;
     font-size: 12px;
     color: #A7AEB5;
-    margin-top: 6px;
 }
 
-/* ================= CARDS ================= */
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    gap: 25px;
 }
 
 .card {
     background: rgba(20,22,26,0.7);
     border: 1px solid #1f1f1f;
     padding: 30px;
-    transition: 0.4s;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    border-color: #C8A86B;
-}
-
-/* ================= CONTACT ================= */
+/* CONTACT */
 .contact {
-    background: #0A0B0D;
     border-top: 1px solid #1d1d1d;
 }
 
@@ -247,13 +206,9 @@ input, textarea {
     color: white;
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 @media (max-width: 768px) {
     nav ul { display: none; }
-
-    .hero {
-        height: 180vh;
-    }
 
     .hero h2 {
         font-size: 34px;
@@ -261,7 +216,6 @@ input, textarea {
 
     .stats {
         flex-direction: column;
-        gap: 30px;
     }
 }
 </style>
@@ -282,19 +236,17 @@ input, textarea {
     </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
     <div class="hero-content">
         <h2>Protection Without Compromise</h2>
-        <p>Executive Protection • Intelligence • Global Security Operations</p>
-        <button class="btn">Request Secure Access</button>
+        <p>Executive Protection • Intelligence • Global Security</p>
+        <button class="btn">Request Access</button>
     </div>
 </div>
 
-<!-- SECTIONS -->
-<section>
+<section class="stats-section">
     <div class="stats">
-        <div class="stat"><span class="count" data-target="19">0</span>+<small>Years Field Experience</small></div>
+        <div class="stat"><span class="count" data-target="19">0</span>+<small>Years Experience</small></div>
         <div class="stat"><span class="count" data-target="920">0</span>+<small>Operations</small></div>
         <div class="stat"><span class="count" data-target="35">0</span>+<small>Countries</small></div>
     </div>
@@ -305,7 +257,7 @@ input, textarea {
         <div class="card"><h3>Executive Protection</h3></div>
         <div class="card"><h3>Risk Intelligence</h3></div>
         <div class="card"><h3>Travel Security</h3></div>
-        <div class="card"><h3>Critical Infrastructure</h3></div>
+        <div class="card"><h3>Infrastructure Security</h3></div>
     </div>
 </section>
 
@@ -316,34 +268,34 @@ input, textarea {
 </section>
 
 <script>
-// loader
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
 
+    const loader = document.querySelector(".loader");
+    const hero = document.querySelector(".hero-content");
+
     setTimeout(() => {
-        document.querySelector(".hero-content").classList.add("active");
-    }, 900);
+        hero.classList.add("active");
+    }, 800);
+
+    setTimeout(() => {
+        loader.remove();
+    }, 1800);
 });
 
-// nav + scroll logic
-const hero = document.querySelector(".hero-content");
+// NAV + SCROLL + SECTIONS (1 Listener statt 2)
+const nav = document.querySelector("nav");
+const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", () => {
-    const nav = document.querySelector("nav");
     const scrollY = window.scrollY;
-    const h = window.innerHeight;
 
-    if (scrollY > h * 0.5) {
+    if (scrollY > window.innerHeight * 0.5) {
         nav.classList.add("visible");
     } else {
         nav.classList.remove("visible");
     }
-});
 
-// sections reveal
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
     sections.forEach(sec => {
         if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
             sec.classList.add("active");
@@ -351,24 +303,34 @@ window.addEventListener("scroll", () => {
     });
 });
 
-// COUNTER ANIMATION
+// COUNTERS (nur wenn sichtbar)
 const counters = document.querySelectorAll(".count");
 
-counters.forEach(counter => {
-    const update = () => {
-        const target = +counter.getAttribute("data-target");
-        const current = +counter.innerText;
-        const step = target / 60;
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counter = entry.target;
+            const target = +counter.dataset.target;
+            let current = 0;
 
-        if (current < target) {
-            counter.innerText = Math.ceil(current + step);
-            setTimeout(update, 20);
-        } else {
-            counter.innerText = target;
+            const update = () => {
+                const step = target / 50;
+                if (current < target) {
+                    current += step;
+                    counter.innerText = Math.ceil(current);
+                    requestAnimationFrame(update);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            update();
+            observer.unobserve(counter);
         }
-    };
-    update();
-});
+    });
+}, { threshold: 0.6 });
+
+counters.forEach(c => observer.observe(c));
 </script>
 
 </body>
