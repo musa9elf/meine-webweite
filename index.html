@@ -346,6 +346,30 @@ footer {
   </div>
 </section>
 
+<section id="why" class="fade">
+  <h2>Warum M8?</h2>
+  <div class="grid" style="margin-top: 60px; text-align: center;">
+    <div class="card">
+      <div style="font-size: 48px; font-weight: 700; color: #C9A84C;">
+        <span class="counter" data-target="100">0</span>%
+      </div>
+      <p style="margin-top: 10px;">Diskretion bei jedem Einsatz</p>
+    </div>
+    <div class="card">
+      <div style="font-size: 48px; font-weight: 700; color: #C9A84C;">
+        <span class="counter" data-target="24">0</span>/7
+      </div>
+      <p style="margin-top: 10px;">Rund um die Uhr erreichbar</p>
+    </div>
+    <div class="card">
+      <div style="font-size: 48px; font-weight: 700; color: #C9A84C;">
+        <span class="counter" data-target="5">0</span>★
+      </div>
+      <p style="margin-top: 10px;">Höchste Ansprüche</p>
+    </div>
+  </div>
+</section>
+  
 <section id="contact" class="fade">
   <h2>Kontakt</h2>
   <form>
@@ -393,6 +417,32 @@ window.addEventListener('scroll', () => {
     heroBg.style.transform = `translateY(${scrollTop * 0.15}px) scale(1.1)`;
   }
 });
+// Zähler Animation
+function animateCounter(element, target, duration) {
+  let start = 0;
+  const increment = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += increment;
+    if (start >= target) {
+      start = target;
+      clearInterval(timer);
+    }
+    element.textContent = Math.floor(start);
+  }, 16);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-target'));
+      animateCounter(el, target, 2000);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 </script>
 
 </body>
