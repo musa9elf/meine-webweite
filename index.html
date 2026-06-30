@@ -65,7 +65,16 @@ nav {
     background: rgba(10,10,10,0.35);
     backdrop-filter: blur(16px);
     z-index: 1000;
-    transition: 0.4s;
+
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: 0.5s ease;
+}
+    nav.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 nav.scrolled {
@@ -115,6 +124,8 @@ nav ul li:hover {
 }
 
 .hero-content {
+    opacity:0;
+    transition: 0.8s ease;
     position: relative;
     text-align: center;
     max-width: 900px;
@@ -226,6 +237,14 @@ input, textarea {
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(25px); }
     to { opacity: 1; transform: translateY(0); }
+}
+    body {
+    animation: introFade 1.5s ease;
+}
+
+@keyframes introFade {
+    from { filter: blur(10px); transform: scale(1.05); }
+    to { filter: blur(0); transform: scale(1); }
 }
 
 /* ================= MOBILE ================= */
@@ -342,7 +361,14 @@ window.addEventListener("load", () => {
 // NAV SCROLL EFFECT
 window.addEventListener("scroll", () => {
     const nav = document.querySelector("nav");
-    nav.classList.toggle("scrolled", window.scrollY > 50);
+
+    if (window.scrollY > window.innerHeight * 0.6) {
+        nav.classList.add("visible");
+        document.querySelector(".hero-content").style.opacity = "1";
+    } else {
+        nav.classList.remove("visible");
+        document.querySelector(".hero-content").style.opacity = "0";
+    }
 });
 
 // SECTION REVEAL
