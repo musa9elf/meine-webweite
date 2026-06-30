@@ -336,16 +336,7 @@ window.addEventListener("load", () => {
 
 // COUNTERS
 const counters = document.querySelectorAll(".count");
-    window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-
-    const bg = document.querySelector(".hero-bg");
-    const content = document.querySelector(".hero-content");
-
-    bg.style.transform = `translateY(${scrollY * 0.3}px) scale(1.1)`;
-    content.style.transform = `translateY(${scrollY * 0.15}px)`;
-});
-
+    
 counters.forEach(counter => {
     const update = () => {
         const target = +counter.getAttribute("data-target");
@@ -360,6 +351,16 @@ counters.forEach(counter => {
         }
     };
     update();
+});
+
+    window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+
+    const bg = document.querySelector(".hero-bg");
+    const content = document.querySelector(".hero-content");
+
+    bg.style.transform = `translateY(${scrollY * 0.3}px) scale(1.1)`;
+    content.style.transform = `translateY(${scrollY * 0.15}px)`;
 });
 </script>
 
