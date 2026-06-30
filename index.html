@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>M8 International Protection</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -16,32 +16,15 @@
 }
 
 body {
-    background: #0A0B0D;
+    background: #0E0F11;
     color: #F5F5F5;
     overflow-x: hidden;
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 1.2s ease;
 }
 
 body.loaded {
     opacity: 1;
-}
-
-/* LOADER */
-.loader {
-    position: fixed;
-    inset: 0;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-.loader h1 {
-    font-size: 14px;
-    letter-spacing: 6px;
-    color: #C8A86B;
 }
 
 /* NAV */
@@ -49,35 +32,24 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 18px 60px;
+    padding: 20px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(10,10,10,0.35);
-    backdrop-filter: blur(16px);
+    background: rgba(10,10,10,0.4);
+    backdrop-filter: blur(12px);
     z-index: 1000;
-
-    opacity: 0;
-    transform: translateY(-20px);
-    pointer-events: none;
-    transition: 0.4s ease;
-}
-
-nav.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
 }
 
 nav h1 {
-    font-size: 12px;
-    letter-spacing: 4px;
-    color: #C8A86B;
+    font-size: 14px;
+    letter-spacing: 3px;
+    font-weight: 500;
 }
 
 nav ul {
     display: flex;
-    gap: 28px;
+    gap: 25px;
     list-style: none;
 }
 
@@ -89,76 +61,65 @@ nav ul li {
 
 /* HERO */
 .hero {
-    height: 200vh;
-    background: url('100.jpeg') center/cover no-repeat;
+    height: 100vh;
+    background: url('hero.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 }
 
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.3), rgba(0,0,0,0.85));
+}
+
 .hero-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     text-align: center;
     max-width: 900px;
-}
-
-.hero h2,
-.hero p,
-.hero .btn {
-    opacity: 0;
-    transform: translateX(60px);
-}
-
-.hero-content.active h2 {
-    animation: slideIn 0.7s forwards;
-}
-.hero-content.active p {
-    animation: slideIn 0.7s forwards;
-    animation-delay: 0.1s;
-}
-.hero-content.active .btn {
-    animation: slideIn 0.7s forwards;
-    animation-delay: 0.2s;
-}
-
-@keyframes slideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    animation: fadeUp 1.5s ease;
 }
 
 .hero h2 {
-    font-size: 62px;
+    font-size: 54px;
+    letter-spacing: 1px;
     font-weight: 400;
 }
 
 .hero p {
-    margin-top: 15px;
+    margin-top: 20px;
     color: #A7AEB5;
+    font-size: 14px;
 }
 
 .btn {
-    margin-top: 25px;
-    padding: 12px 28px;
+    margin-top: 30px;
+    padding: 12px 30px;
     border: 1px solid #C8A86B;
     background: transparent;
     color: #C8A86B;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #C8A86B;
+    color: #0E0F11;
 }
 
 /* SECTIONS */
 section {
-    padding: 120px 60px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 0.8s ease;
+    padding: 110px 60px;
 }
 
-section.active {
-    opacity: 1;
-    transform: translateY(0);
+.section-title {
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #C8A86B;
+    margin-bottom: 50px;
 }
 
 /* STATS */
@@ -169,7 +130,7 @@ section.active {
 }
 
 .stat {
-    font-size: 44px;
+    font-size: 40px;
     color: #C8A86B;
 }
 
@@ -177,41 +138,92 @@ section.active {
     display: block;
     font-size: 12px;
     color: #A7AEB5;
+    margin-top: 6px;
 }
 
 /* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+    gap: 30px;
 }
 
 .card {
-    background: rgba(20,22,26,0.7);
-    border: 1px solid #1f1f1f;
+    background: #15181C;
     padding: 30px;
+    border-left: 2px solid #C8A86B;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* CASE STUDIES */
+.case {
+    background: #15181C;
+    padding: 30px;
+    border: 1px solid #222;
+}
+
+.case h3 {
+    color: #F5F5F5;
+    margin-bottom: 10px;
+}
+
+.case p {
+    color: #A7AEB5;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* TESTIMONIALS */
+.testimonial {
+    border-left: 2px solid #C8A86B;
+    padding-left: 20px;
+    color: #A7AEB5;
+    font-style: italic;
 }
 
 /* CONTACT */
 .contact {
-    border-top: 1px solid #1d1d1d;
+    background: #0B0C0E;
+    padding: 60px;
+    border-top: 1px solid #1D232A;
 }
 
 input, textarea {
     width: 100%;
-    padding: 14px;
-    margin-top: 12px;
-    background: rgba(20,22,26,0.6);
+    margin-top: 10px;
+    padding: 12px;
+    background: #15181C;
     border: 1px solid #222;
     color: white;
 }
 
+/* ANIMATIONS */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
-    nav ul { display: none; }
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        display: none;
+    }
 
     .hero h2 {
-        font-size: 34px;
+        font-size: 30px;
+    }
+
+    section {
+        padding: 70px 20px;
     }
 
     .stats {
@@ -222,10 +234,6 @@ input, textarea {
 </head>
 
 <body>
-
-<div class="loader">
-    <h1>M8 INTERNATIONAL PROTECTION</h1>
-</div>
 
 <nav>
     <h1>M8 INTERNATIONAL PROTECTION</h1>
@@ -239,98 +247,105 @@ input, textarea {
 <div class="hero">
     <div class="hero-content">
         <h2>Protection Without Compromise</h2>
-        <p>Executive Protection • Intelligence • Global Security</p>
-        <button class="btn">Request Access</button>
+        <p>Executive Protection • Intelligence • Global Risk Management</p>
+        <button class="btn">Request Secure Contact</button>
     </div>
 </div>
 
-<section class="stats-section">
+<section>
+    <h2 class="section-title">OPERATIONAL EXPERIENCE</h2>
+
     <div class="stats">
-        <div class="stat"><span class="count" data-target="19">0</span>+<small>Years Experience</small></div>
-        <div class="stat"><span class="count" data-target="920">0</span>+<small>Operations</small></div>
-        <div class="stat"><span class="count" data-target="35">0</span>+<small>Countries</small></div>
+        <div class="stat"><span class="count" data-target="15">0</span>+<small>Years Field Experience</small></div>
+        <div class="stat"><span class="count" data-target="500">0</span>+<small>Protected Operations</small></div>
+        <div class="stat"><span class="count" data-target="30">0</span>+<small>Countries Active</small></div>
     </div>
 </section>
 
 <section>
+    <h2 class="section-title">CORE SERVICES</h2>
+
     <div class="grid">
-        <div class="card"><h3>Executive Protection</h3></div>
-        <div class="card"><h3>Risk Intelligence</h3></div>
-        <div class="card"><h3>Travel Security</h3></div>
-        <div class="card"><h3>Infrastructure Security</h3></div>
+        <div class="card">
+            <h3>Executive Protection</h3>
+            <p>Discreet personal security for high-risk individuals and global executives.</p>
+        </div>
+
+        <div class="card">
+            <h3>Intelligence & Risk</h3>
+            <p>Threat analysis, monitoring and strategic advisory for sensitive environments.</p>
+        </div>
+
+        <div class="card">
+            <h3>Travel Security</h3>
+            <p>International movement protection in unstable or high-risk regions.</p>
+        </div>
+
+        <div class="card">
+            <h3>Event Protection</h3>
+            <p>Security planning and execution for private and corporate events.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">MISSIONS</h2>
+
+    <div class="grid">
+        <div class="case">
+            <h3>Corporate Executive Escort</h3>
+            <p>Multi-country protection detail for CEO travel under elevated threat profile.</p>
+        </div>
+
+        <div class="case">
+            <h3>Diplomatic Event Security</h3>
+            <p>Coordination of secure perimeter and personnel screening for diplomatic summit.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2 class="section-title">CLIENT FEEDBACK</h2>
+
+    <div class="testimonial">
+        “Absolute discretion, precise execution. They operate without attention — exactly as required.”
     </div>
 </section>
 
 <section class="contact">
+    <h2 class="section-title">SECURE CONTACT</h2>
+
     <input type="text" placeholder="Name">
     <input type="email" placeholder="Email">
     <textarea rows="5" placeholder="Message"></textarea>
+
+    <button class="btn" style="margin-top:20px;">Send Encrypted Request</button>
 </section>
 
 <script>
+// PAGE LOAD ANIMATION
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
-
-    const loader = document.querySelector(".loader");
-    const hero = document.querySelector(".hero-content");
-
-    setTimeout(() => {
-        hero.classList.add("active");
-    }, 800);
-
-    setTimeout(() => {
-        loader.remove();
-    }, 1800);
 });
 
-// NAV + SCROLL + SECTIONS (1 Listener statt 2)
-const nav = document.querySelector("nav");
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-
-    if (scrollY > window.innerHeight * 0.5) {
-        nav.classList.add("visible");
-    } else {
-        nav.classList.remove("visible");
-    }
-
-    sections.forEach(sec => {
-        if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
-            sec.classList.add("active");
-        }
-    });
-});
-
-// COUNTERS (nur wenn sichtbar)
+// COUNTERS
 const counters = document.querySelectorAll(".count");
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const counter = entry.target;
-            const target = +counter.dataset.target;
-            let current = 0;
+counters.forEach(counter => {
+    const update = () => {
+        const target = +counter.getAttribute("data-target");
+        const current = +counter.innerText;
+        const increment = target / 70;
 
-            const update = () => {
-                const step = target / 50;
-                if (current < target) {
-                    current += step;
-                    counter.innerText = Math.ceil(current);
-                    requestAnimationFrame(update);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-
-            update();
-            observer.unobserve(counter);
+        if (current < target) {
+            counter.innerText = Math.ceil(current + increment);
+            setTimeout(update, 25);
+        } else {
+            counter.innerText = target;
         }
-    });
-}, { threshold: 0.6 });
-
-counters.forEach(c => observer.observe(c));
+    };
+    update();
+});
 </script>
 
 </body>
