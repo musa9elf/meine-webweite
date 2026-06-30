@@ -71,7 +71,8 @@ nav {
     pointer-events: none;
     transition: 0.5s ease;
 }
-    nav.visible {
+
+nav.visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -113,7 +114,6 @@ nav ul li:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(0);
 }
 
 .hero::after {
@@ -124,12 +124,11 @@ nav ul li:hover {
 }
 
 .hero-content {
-    opacity:0;
+    opacity: 0;
     transition: 0.8s ease;
     position: relative;
     text-align: center;
     max-width: 900px;
-    animation: fadeUp 1.6s ease;
 }
 
 .hero h2 {
@@ -233,26 +232,17 @@ input, textarea {
     color: white;
 }
 
-/* ================= ANIMATIONS ================= */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(25px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-    body {
-    animation: introFade 1.5s ease;
-}
-
-@keyframes introFade {
-    from { filter: blur(10px); transform: scale(1.05); }
-    to { filter: blur(0); transform: scale(1); }
-}
-
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
     nav ul { display: none; }
 
     .hero h2 {
         font-size: 34px;
+    }
+
+    .hero {
+        background-size: 120%;
+        background-position: center;
     }
 
     section {
@@ -282,7 +272,7 @@ input, textarea {
     </ul>
 </nav>
 
-<div class="hero" id="hero">
+<div class="hero">
     <div class="hero-content">
         <h2>Protection Without Compromise</h2>
         <p>Executive Protection • Intelligence • Global Security Operations</p>
@@ -356,18 +346,23 @@ input, textarea {
 // LOADER END
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
+
+    setTimeout(() => {
+        document.querySelector(".hero-content").style.opacity = "1";
+    }, 800);
 });
 
-// NAV SCROLL EFFECT
+// NAV + HERO CONTROL
 window.addEventListener("scroll", () => {
     const nav = document.querySelector("nav");
+    const heroText = document.querySelector(".hero-content");
 
-    if (window.scrollY > window.innerHeight * 0.6) {
+    if (window.scrollY > window.innerHeight * 0.5) {
         nav.classList.add("visible");
-        document.querySelector(".hero-content").style.opacity = "1";
+        heroText.style.opacity = "1";
     } else {
         nav.classList.remove("visible");
-        document.querySelector(".hero-content").style.opacity = "0";
+        heroText.style.opacity = "0";
     }
 });
 
